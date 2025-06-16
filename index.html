@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía de Estudio Integral - Aspirantes 2025</title>
+    <title>Guía de Estudio Colaborativa - Aspirantes 2025</title>
     
     <!-- Recursos Comunes -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,6 +20,7 @@
             --border-color: #E5E7EB;
             --input-bg-color: white;
             --input-text-color: #1F2937;
+            --summary-text-color: #1F2937;
         }
         body.dark-mode {
             --bg-color: #111827;
@@ -28,72 +29,27 @@
             --border-color: #374151;
             --input-bg-color: #374151;
             --input-text-color: #F9FAFB;
+            --summary-text-color: #F9FAFB;
         }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .hero-bg {
-            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://placehold.co/1200x800/222/FFF?text=Aspirantes+a+Bomberos');
-            background-size: cover;
-            background-position: center;
-        }
-        .section-title {
-            border-left: 4px solid #EF4444; /* red-500 */
-            padding-left: 1rem;
-        }
-        .info-details {
-            background-color: var(--card-bg-color);
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            border: 1px solid var(--border-color);
-            transition: box-shadow 0.3s, background-color 0.3s, border-color 0.3s;
-        }
-        .info-details:hover {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-        }
-        .info-summary {
-            font-weight: 600;
-            font-size: 1.125rem; /* text-lg */
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            list-style: none;
-            color: var(--text-color);
-        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .hero-bg { background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://placehold.co/1200x800/222/FFF?text=Aspirantes+a+Bomberos'); background-size: cover; background-position: center; }
+        .section-title { border-left: 4px solid #EF4444; padding-left: 1rem; }
+        .info-details { background-color: var(--card-bg-color); border-radius: 0.5rem; margin-bottom: 1rem; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); border: 1px solid var(--border-color); transition: box-shadow 0.3s, background-color 0.3s, border-color 0.3s; }
+        .info-details:hover { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05); }
+        .info-summary { font-weight: 600; font-size: 1.125rem; padding: 1rem 1.5rem; cursor: pointer; display: flex; align-items: center; list-style: none; color: var(--summary-text-color); }
         .info-summary::-webkit-details-marker { display: none; }
-        .info-summary .summary-icon {
-            transition: transform 0.2s ease-in-out;
-            margin-left: 1rem;
-        }
-        .info-details[open] > .info-summary .summary-icon {
-            transform: rotate(180deg);
-        }
-        .details-content {
-            padding: 1.5rem;
-            color: #4B5563;
-            line-height: 1.7;
-        }
+        .info-summary .summary-icon { transition: transform 0.2s ease-in-out; margin-left: 1rem; }
+        .info-details[open] > .info-summary .summary-icon { transform: rotate(180deg); }
+        .details-content { padding: 1.5rem; color: #4B5563; line-height: 1.7; }
         body.dark-mode .details-content { color: #D1D5DB; }
-        .details-content[contenteditable="true"] {
-            background-color: #fef9c3;
-            outline: 2px solid #f59e0b;
-            border-radius: 0.25rem;
-            min-height: 150px;
-        }
-        body.dark-mode .details-content[contenteditable="true"] {
-            background-color: #4b5563;
-        }
+        .details-content[contenteditable="true"] { background-color: #fef9c3; outline: 2px solid #f59e0b; border-radius: 0.25rem; min-height: 150px; }
+        body.dark-mode .details-content[contenteditable="true"] { background-color: #4b5563; }
         .details-content h4 { font-size: 1.25rem; font-weight: 700; color: #DC2626; margin-top: 1.5rem; margin-bottom: 0.75rem; padding-bottom: 0.25rem; border-bottom: 2px solid var(--border-color); }
         .details-content h5 { font-size: 1.1rem; font-weight: 600; color: var(--text-color); margin-top: 1.25rem; margin-bottom: 0.5rem; }
         .details-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
         .details-content li { margin-bottom: 0.5rem; }
         .details-content img, .details-content iframe { max-width: 100%; height: auto; margin: 1rem auto; border-radius: 0.5rem; display: block; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
-        .details-content p > strong, .details-content b { color: var(--text-color); }
+        .details-content strong, .details-content b { color: var(--text-color); }
         .code-list { font-family: monospace; background-color: #f3f4f6; padding: 1rem; border-radius: 0.5rem; }
         body.dark-mode .code-list { background-color: #374151; }
         #splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #111827; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1000; text-align: center; padding: 2rem; }
@@ -103,20 +59,11 @@
         .action-button { padding: 0.5rem 1rem; border-radius: 0.375rem; border: none; cursor: pointer; font-weight: 600; margin-left: 0.5rem; }
         .save-button { background-color: #16a34a; color: white; }
         .undo-button { background-color: #6b7280; color: white; }
+        .delete-button { background-color: #dc2626; color: white; }
         .footer-links a { transition: color 0.2s; }
         .footer-links a:hover { color: #ef4444; }
-        .editor-toolbar {
-             display: flex;
-             flex-wrap: wrap;
-             align-items: center;
-             padding: 0.5rem;
-             background-color: var(--card-bg-color);
-             border-bottom: 1px solid var(--border-color);
-        }
-        .editor-toolbar button, .editor-toolbar .color-picker-wrapper {
-             background-color: #e5e7eb; border: 1px solid #d1d5db; padding: 0.25rem 0.5rem;
-             margin-right: 0.5rem; margin-bottom: 0.5rem; border-radius: 0.25rem; display: inline-flex; align-items: center;
-        }
+        .editor-toolbar { display: flex; flex-wrap: wrap; align-items: center; padding: 0.5rem; background-color: var(--card-bg-color); border-bottom: 1px solid var(--border-color); }
+        .editor-toolbar button, .editor-toolbar .color-picker-wrapper { background-color: #e5e7eb; border: 1px solid #d1d5db; padding: 0.25rem 0.5rem; margin-right: 0.5rem; margin-bottom: 0.5rem; border-radius: 0.25rem; display: inline-flex; align-items: center; }
         .color-picker-wrapper { position: relative; }
         .color-picker { -webkit-appearance: none; -moz-appearance: none; appearance: none; width: 24px; height: 24px; padding: 0; border: none; background: transparent; cursor: pointer; }
         .color-picker::-webkit-color-swatch-wrapper { padding: 0; }
@@ -128,7 +75,7 @@
         .slider:before { background-color: #fff; bottom: 4px; content: ""; height: 16px; left: 4px; position: absolute; transition: .4s; width: 16px; border-radius: 50%; }
         input:checked + .slider { background-color: #EF4444; }
         input:checked + .slider:before { transform: translateX(24px); }
-        .custom-input { background-color: var(--input-bg-color); color: var(--text-color); }
+        .custom-input { background-color: var(--input-bg-color); color: var(--input-text-color); border: 1px solid var(--border-color); }
         body.dark-mode .edit-button, body.dark-mode .editor-toolbar button { background-color: #4b5563; border-color: #6b7280; color: #e5e7eb; }
         body.dark-mode .edit-button:hover, body.dark-mode .editor-toolbar button:hover { background-color: #6b7280; }
     </style>
@@ -145,7 +92,6 @@
 
     <!-- Contenido Principal (Oculto inicialmente) -->
     <div id="main-content" style="display: none;">
-        <!-- Header y Navegación -->
         <header class="bg-gray-900 text-white shadow-md sticky top-0 z-50">
             <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
                 <a href="#" class="text-2xl font-bold text-red-500">Aspirantes 2025</a>
@@ -165,18 +111,14 @@
             </div>
         </header>
 
-        <!-- Hero Section -->
         <section class="hero-bg text-white py-20 md:py-32">
             <div class="container mx-auto text-center px-6">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4">Módulo de Estudio Integral</h1>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Módulo de Estudio Colaborativo</h1>
                 <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">"Servir es un honor, proteger es nuestra misión." ❤️</p>
             </div>
         </section>
 
-        <!-- Main Content -->
         <main class="container mx-auto px-6 py-12">
-
-            <!-- Sección de Clases en Drive -->
             <section id="clases" class="mb-16">
                 <h2 class="text-3xl font-bold mb-6 section-title">Materiales Oficiales de Estudio</h2>
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden p-8 text-center border border-gray-200">
@@ -192,18 +134,16 @@
                 </div>
             </section>
 
-            <!-- Sección de Resúmenes de Clase -->
             <section id="resumenes">
-                <h2 class="text-3xl font-bold mb-6 section-title">Resúmenes de Clases para Repaso</h2>
-                <p class="mb-8 text-gray-600">Utiliza estos resúmenes como una guía rápida para repasar los conceptos clave de cada módulo. Haz clic en cualquier clase para expandir la información o en "Modificar" para editarla.</p>
+                <h2 class="text-3xl font-bold mb-6 section-title">Resúmenes de Clases Colaborativos</h2>
+                <p class="mb-8 text-gray-600">Utiliza estos resúmenes para repasar. Haz clic en "Modificar" para editar el contenido, y los cambios serán visibles para todos tus compañeros.</p>
                 
                 <div id="class-modules-container">
-                    <!-- Los módulos de clase se insertarán aquí dinámicamente -->
+                    <!-- Los módulos de clase se insertarán aquí dinámicamente desde Firebase -->
                 </div>
 
-                <!-- Sección para Agregar Nueva Clase -->
                 <section id="add-class-section" class="mt-12">
-                    <h3 class="text-2xl font-bold mb-4 section-title">Agregar Nueva Clase Personalizada</h3>
+                    <h3 class="text-2xl font-bold mb-4 section-title">Agregar Nueva Clase</h3>
                     <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
                         <div class="grid md:grid-cols-3 gap-4 mb-4">
                              <div>
@@ -241,16 +181,13 @@
                         </button>
                     </div>
                 </section>
-
             </section>
         </main>
         
-        <!-- Botón Volver Arriba -->
         <button id="to-top-button" title="Volver Arriba" class="hidden fixed bottom-5 right-5 z-50 p-3 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-opacity">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
         </button>
 
-        <!-- Footer -->
         <footer class="bg-gray-900 text-white">
             <div class="container mx-auto px-6 py-8 text-center">
                 <div class="flex justify-center items-center mb-4">
@@ -270,109 +207,141 @@
             </div>
         </footer>
     </div>
-    <script>
-        let originalContent = {};
-        // Datos de las clases (completos y detallados)
-        let classData = [
-             { id: 1, icon: 'fas fa-landmark text-yellow-600', title: 'Marco Histórico', content: `<h4>Marco Histórico Bomberil (Orígenes)</h4> <p>Los primeros antecedentes de organizaciones de bomberos se remontan a la <strong>Antigua Roma (año 64 D.C.)</strong>. Los "Triumviri Nocturni" y, posteriormente, los "Vigiles" (creados por el emperador Augusto) fueron los encargados de combatir incendios y mantener la seguridad nocturna. Los Vigiles se dividían en grupos especializados:</p> <ul> <li><strong>Aquarii:</strong> Encargados de almacenar y transportar agua en vasijas.</li> <li><strong>Siphonarii:</strong> Manejaban las primeras bombas de agua a pistón y empapaban mantas con vinagre.</li> <li><strong>Centones:</strong> Iluminaban la zona del siniestro.</li> <li><strong>Bocinarii:</strong> Daban la alarma con una trompeta.</li> <li>El lema actual de los bomberos en Italia, <em>"Ubi dolor ibi vigiles"</em> ("allí donde hay dolor están los vigilantes"), rinde homenaje a estos pioneros.</li> </ul> <h4>Marco Histórico Nacional (Argentina)</h4> <p>La historia de los Bomberos Voluntarios Argentinos comienza en <strong>1884</strong>, impulsada por la comunidad de inmigrantes italianos en el barrio de La Boca, Buenos Aires. Las viviendas de la época, llamadas "conventillos" (construidas con madera y chapa), eran altamente propensas a incendios.</p> <ul> <li>Un gran incendio en un comercio en diciembre de 1883 motivó a <strong>Don Tomás Liberti</strong>, junto a sus hijos Oreste y Atilio y un grupo de vecinos, a organizarse. Oreste, en medio del incendio, gritó "¡Todos los hombres que se animen vengan, vamos a apagar este incendio!".</li> <li>El <strong>2 de junio de 1884</strong>, en su casa, se formó el primer Cuerpo de Bomberos Voluntarios de la República Argentina: "Societa di Pompieri Italiani Volontari di La Boca". Su lema era <em>"Volere è Potere"</em> (Querer es Poder).</li> </ul> <h4>Marco Histórico Institucional (Bomberos Voluntarios Malvinas Argentinas)</h4> <h5>ASOCIACIÓN BOMBEROS VOLUNTARIOS MALVINAS ARGENTINAS</h5> <img src="imagenes/cuartel central.png" alt="Foto del Cuartel Central" onerror="this.onerror=null;this.src='https://placehold.co/400x250/333/FFF?text=Cuartel+Central';"> <ul> <li><strong>Fundación:</strong> 03 de marzo de 1984.</li> </ul> <h5>CUARTEL CENTRAL "Juan Espina"</h5> <ul> <li><strong>Nombre:</strong> Juan Espina.</li> <li><strong>Dirección:</strong> Dr. Baroni 2684.</li> <li><strong>Teléfono:</strong> 4660 - 2222.</li> <li><strong>Primer Presidente H.C.D.:</strong> Mendez Bernardo.</li> <li><strong>Primer Jefe C.A.:</strong> Garcia Jose (Legajo 166/001).</li> <li><strong>Actual Presidente H.C.D.:</strong> Demilio Gabriel.</li> <li><strong>Actual Jefe C.A.:</strong> Oficial Herrera Andrés.</li> </ul> <h5>DESTACAMENTO N° 1 GRAND BOURG "Dionicio García"</h5> <img src="imagenes/destacamento 1.png" alt="Foto del Destacamento 1" onerror="this.onerror=null;this.src='https://placehold.co/400x250/555/FFF?text=Destacamento+1';"> <ul> <li><strong>Nombre:</strong> Dionicio García.</li> <li><strong>Inauguración:</strong> 23 de Febrero de 1993.</li> <li><strong>Dirección:</strong> Paso de los Andes 951.</li> <li><strong>Teléfono:</strong> (02320) 48-1777.</li> <li><strong>Actual Encargado:</strong> Oficial Paz.</li> </ul>` },
-             { id: 2, icon: 'fas fa-sitemap text-green-600', title: 'Organización Bomberil', content: `<h5>La Institución</h5><p>La <strong>Asociación de Bomberos Voluntarios de Malvinas Argentinas</strong>, fundada el 3 de Marzo de 1984 tras la separación del municipio de Gral. Sarmiento, es una asociación civil sin fines de lucro y de bien público. Cuenta con Personería Jurídica y se rige por sus Estatutos Sociales y la Ley Provincial N° 10.917. Su número de <strong>INOBV</strong> (Identificación Numérica de Organismos de BV) es el <strong>166</strong>.</p><h5>Socios y Autoridades</h5><ul><li><strong>Socios Activos:</strong> Cumplen requisitos, aprueban el curso obligatorio e integran el Cuerpo Activo, Reserva o Cuerpo Auxiliar. Tienen la obligación de prestar servicios.</li><li><strong>Socios Protectores:</strong> Abonan una cuota mensual y pueden elegir y ser elegidos para el Consejo Directivo, ejerciendo la administración y gobierno de la asociación.</li><li><strong>Autoridades:</strong> El <strong>Consejo Directivo</strong> (administración, representación legal, designa al Jefe de Cuerpo) y el <strong>Cuerpo Activo</strong> (estructura piramidal operativa comandada por el Jefe de Cuerpo). El Jefe de Cuerpo es la máxima autoridad del Cuerpo Activo y es miembro permanente del Consejo Directivo.</li></ul><h5>Orden Interno y Organización del Cuerpo Activo</h5><p>Las actividades se dividen en <strong>Orden Interno</strong> (dentro del cuartel) y <strong>Servicios</strong> (fuera del cuartel). Para el orden interno, el Jefe de Cuerpo divide las responsabilidades en cuatro secciones principales, supervisadas por el 2do Jefe:</p><ol><li><strong>Ayudantía:</strong> Incluye los Departamentos de Personal, Técnico, Ropería, Finanzas y Sanidad.</li><li><strong>Materiales y Equipos:</strong> Equipos contra Incendio y Rescate, EPP, Elementos de Zapa y Auxiliares, e Intendencia.</li><li><strong>Automotores:</strong> Autobombas, vehículos de rescate, transporte de personal, ambulancias, cisternas.</li><li><strong>Capacitación:</strong> Capacitación Interna, a Terceros y la Escuela Zonal.</li></ol><h5>Escalafón Jerárquico</h5><p>Es la estructura piramidal que determina los grados y el mando dentro del Cuerpo Activo, basada en capacidad, antigüedad e idoneidad. Los grados, de mayor a menor, son:</p><img src="imagenes/escalafon gerarjico.png" alt="Escalafón Jerárquico de Bomberos" onerror="this.onerror=null;this.src='https://placehold.co/400x250/333/FFF?text=Escalafón+Jerárquico';"><ul><li><strong>Oficiales Superiores:</strong> Comandante General.</li><li><strong>Oficiales Jefes:</strong> Comandante Mayor, Comandante, Sub-Comandante.</li><li><strong>Oficiales Subalternos:</strong> Oficial Principal, Oficial Inspector, Oficial Ayudante.</li><li><strong>Suboficiales Superiores:</strong> Suboficial Mayor, Suboficial Principal, Sargento Primero.</li><li><strong>Suboficiales Subalternos:</strong> Sargento, Cabo Primero, Cabo.</li><li><strong>Tropa:</strong> Bomberos (el brazo ejecutor).</li></ul>` },
-             { id: 3, icon: 'fas fa-balance-scale text-gray-600', title: 'Leyes y Decretos', content: `<h5>Ley Nacional 25.054 (Bomberos Voluntarios)</h5><p>Sancionada el 10 de diciembre de 1998, regula la organización y misión de los bomberos voluntarios en Argentina.</p><ul><li><strong>Objetivos:</strong> Establecer un subsidio nacional, reconocer el servicio público de los bomberos y brindar apoyo económico para capacitación y equipamiento.</li><li><strong>Beneficios:</strong> Puntaje especial en planes de viviendas del Estado, atención prioritaria en salud pública por alteraciones de salud debido a la actividad bomberil y ser considerados movilizados en emergencias (carga pública para empleadores).</li><li><strong>Exenciones:</strong> Exentos de impuestos nacionales, derechos y tasas aduaneras. Sus fondos y bienes son inembargables e inejecutables.</li></ul><h5>Ley Provincial 10.917 (Provincia de Buenos Aires)</h5><p>Sancionada el 31 de mayo de 1990, regula la organización y funcionamiento de las asociaciones de bomberos voluntarios en la provincia.</p><ul><li>Deben constituirse como personas jurídicas de bien público sin fines de lucro.</li><li>El Coordinador General de Defensa Civil de la Provincia autoriza su funcionamiento.</li><li>Deben denominarse con el nombre del partido, ciudad o localidad de su cuartel central.</li><li><strong>Funciones principales:</strong> Prevención y extinción de incendios, rescate y salvamento de personas y bienes, y acción educativa a la comunidad.</li></ul>` },
-             { id: 5, icon: 'fas fa-tasks text-cyan-600', title: 'Guardia, Instrucción y Servicios', content: `<h5>La Guardia, Instrucción y Servicios</h5><ul><li><strong>Guardia:</strong> Servicio organizado y pasivo para contar con personal en el Cuartel 24/7 para el inmediato aprestamiento.</li><li><strong>Instrucción:</strong> Día y hora preestablecida para que el Cuerpo Activo asista al Cuartel para capacitación y entrenamiento permanente.</li><li><strong>Servicios:</strong> Reconocidos como <strong>servicio público</strong> por la Ley 10.917. Se clasifican en <strong>Servicios de Emergencia</strong> (no admiten demora, convocatoria inmediata) y <strong>Servicios Autorizados</strong> (programados, con orden interna y personal idóneo).</li></ul><h5>Definición y Clasificación Detallada de Servicios:</h5><ul><li><strong>01. INCENDIO:</strong> Fuego incontrolable (excepto forestales y MATPEL).</li><li><strong>02. AUXILIO:</strong> Hecho (natural, accidental, intencional) que pone en riesgo vidas (rescates, accidentes).</li><li><strong>03. ESPECIALES:</strong> Servicios no encuadrados y no obligatorios (ej: desagotes, suministro de agua, colocación de drizas).</li><li><strong>04. DESASTRE:</strong> Cuando son convocados por Defensa Civil.</li><li><strong>05. COLABORACION:</strong> Fuera de la jurisdicción propia, a requerimiento de un Cuerpo vecino.</li><li><strong>10. MATERIALES PELIGROSOS (MATPEL):</strong> Incidentes con riesgo químico, biológico o radiológico.</li><li><strong>11. INCENDIOS FORESTALES:</strong> Fuego descontrolado sobre vegetación.</li></ul>` },
-             { id: 6, icon: 'fas fa-user-shield text-indigo-600', title: 'Aptitud, Ética y Órdenes', content: `<h5>La Aptitud Bomberil</h5><ul><li><strong>Definición:</strong> Calidad, idoneidad, capacidad y disposición para el buen desempeño de la profesión. Un bombero debe ser capaz, idóneo, hábil y dispuesto.</li><li><strong>Se consigue:</strong> Estudiando, capacitándose, con compañerismo, cumpliendo obligaciones y con deseos de superación.</li><li><strong>Estado Físico y Psíquico:</strong> Es fundamental mantener un equilibrio en ambos. Un problema emocional puede disminuir la capacidad operativa. Es responsabilidad personal de cada bombero expresar si no se está apto para el servicio.</li></ul><h5>La Ética Bomberil</h5><p>Normas y principios morales que guían el comportamiento del bombero. Incluye ser buena persona, ejemplo de altruismo, respetar la verdad, honestidad y la estructura jerárquica.</p><h5>Las Órdenes</h5><ul><li><strong>Definición:</strong> Mandato de un superior a un subalterno. Pueden ser verbales, escritas, específicas o globales.</li><li><strong>Cumplimiento:</strong> La desobediencia o el no cumplimiento implica una falta de disciplina y debe ser sancionada por la Jefatura.</li></ul><h5>El Mando</h5><p>No es solo ordenar, sino ejercer la autoridad para educar, instruir y conducir al personal, impulsando con el ejemplo. Quien manda es totalmente responsable.</p>` },
-             { id: 7, icon: 'fas fa-file-alt text-teal-600', title: 'Parte de Servicios', content: `<h5>El Parte de Servicio</h5><ul><li><strong>Definición:</strong> Es la planilla (física o virtual) donde se vuelcan todos los datos relevantes de un servicio prestado.</li><li><strong>Confección:</strong> Realizada por el personal a cargo de la dotación una vez finalizado el servicio. Su confección es <strong>obligatoria</strong>.</li><li><strong>Importancia:</strong> Es un documento con valor legal, administrativo, para seguros y para la elaboración de estadísticas.</li><li><strong>Contenido Esencial:</strong> Horarios, personal interviniente, jefe a cargo, móviles, víctimas, autor de la llamada, desarrollo cronológico, materiales utilizados.</li></ul>` },
-             { id: 9, icon: 'fas fa-broadcast-tower text-blue-600', title: 'Comunicaciones', content: `<h5>Normas para Comunicaciones Radiales</h5><ul><li>Hablar solo lo necesario.</li><li>Esperar turno y respetar prioridad de mandos.</li><li>Identificarse siempre.</li><li>Hablar despacio y vocalizando.</li><li>Ser breve y no usar para indiscreciones.</li></ul><h5>Códigos de Comunicaciones</h5><p><strong>Código Q (Ejemplos):</strong></p><ul class="code-list"><li><strong>QAP:</strong> Atento.</li><li><strong>QRA:</strong> Nombre.</li><li><strong>QRM:</strong> Interferencia.</li><li><strong>QSL:</strong> Comprendido.</li><li><strong>QTH:</strong> Ubicación.</li><li><strong>QRV:</strong> Preparado.</li></ul><p><strong>Código Alfa:</strong> Para deletrear (A: Alfa, B: Bravo...).</p><p><strong>Código Numérico:</strong> Para números (1: Primero...).</p>` },
-             { id: 10, icon: 'fas fa-hard-hat text-orange-600', title: 'Seguridad del Bombero', content: `<h4>Riesgos y Causas de Accidentes</h4><p>La profesión de bombero posee múltiples riesgos, incluyendo colapsos, altas temperaturas, atmósferas peligrosas (tóxicas, cancerígenas), sobreesfuerzos cardíacos, materiales peligrosos, electrocución, etc.</p><h4>Elementos de Protección Personal (EPP)</h4><p>El EPP no evita accidentes, pero reduce sus consecuencias. Su uso correcto es obligatorio.</p><ul><li><strong>EPP Estructural:</strong> Casco, monjita, chaquetón y pantalón (3 capas), guantes y botas.</li><li><strong>PASS (Personal Alert Safety System):</strong> Alarma sonora si el bombero queda inmóvil.</li><li><strong>Limpieza del EPP:</strong> Crucial para remover contaminantes. Incluye Descontaminación Primaria en escena y Limpieza Avanzada posterior.</li></ul><h4>Equipos de Protección Respiratoria (ERA)</h4><ul><li><strong>Uso:</strong> Indispensable en atmósferas con deficiencia de oxígeno, humo o gases tóxicos.</li><li><strong>Partes Principales (Circuito Abierto):</strong> Máscara facial (con presión positiva), arnés, regulador, válvula de demanda, manómetro, alarma de baja presión y cilindro.</li><li><strong>Inspección:</strong> Verificar presión del cilindro (>2000 psi) y alarmas antes de cada uso.</li></ul>` },
-             { id: 11, icon: 'fas fa-brain text-purple-600', title: 'Psicología de la Emergencia', content: `<h4>Psicología de la Emergencia</h4><p>Rama que estudia las reacciones de individuos y grupos antes, durante y después de una emergencia para mitigar sus consecuencias.</p><h4>Estrés y Estresores</h4><ul><li><strong>Estrés:</strong> Reacción física y mental que perturba el equilibrio. La respuesta adaptativa en la emergencia genera desgaste.</li><li><strong>Estresores Ocupacionales:</strong> Incidentes con muertes (compañeros, niños), bajas masivas, sobrecarga de responsabilidades.</li><li><strong>Reacciones Post-Intervención:</strong> Hiperexcitación, flashbacks y evitación son normales hasta 1 mes después. Si persisten, se debe consultar a un profesional.</li></ul><h4>Herramientas Psicológicas</h4><ul><li><strong>Respiración Consciente:</strong> Técnica para calmar la agitación.</li><li><strong>Plan de Manejo del Estrés:</strong> Rutina de descanso, dieta, ejercicio y tiempo libre.</li><li><strong>Defusing (Descarga Emocional):</strong> Sesión grupal breve, post-incidente, para procesar lo vivido.</li></ul><h4>Trabajo en Equipo (Las "5 C")</h4><p>Un equipo de alto rendimiento se basa en: <strong>C</strong>omplementariedad, <strong>C</strong>oordinación, <strong>C</strong>omunicación, <strong>C</strong>onfianza y <strong>C</strong>ompromiso.</p>` },
-             { id: 12, icon: 'fas fa-flag text-pink-600', title: 'Protocolo y Ceremonial', content: `<h4>Protocolo y Ceremonial</h4><ul><li><strong>Ceremonial:</strong> Conjunto de formalidades para actos públicos (desfiles, aniversarios).</li><li><strong>Protocolo:</strong> Normas que definen el desarrollo del acto.</li><li><strong>Precedencia:</strong> Orden y ubicación de las autoridades según su jerarquía.</li></ul><h4>Orden Cerrado</h4><ul><li><strong>Objeto:</strong> Instrucción colectiva para desfiles, afianzando disciplina y compañerismo.</li><li><strong>Voces de Mando:</strong> Constan de una parte <strong>Preventiva</strong> (anuncia el movimiento) y una <strong>Ejecutiva</strong> (indica el inicio).</li></ul><h4>Reglamento de Desfile</h4><ul><li>Establece el orden, uniformidad y comportamiento en desfiles.</li><li><strong>Saludos:</strong> El jefe de sección, abanderado y escoltas realizan "Saludo Uno" al palco oficial; el resto, "Vista Derecha".</li></ul>` },
-             { id: 13, icon: 'fas fa-tools text-gray-700', title: 'Materiales y Equipos', content: `<h4>Escaleras Manuales</h4><p>Herramienta fundamental para salvar obstáculos y acceder a lugares elevados. Resistencia mínima de 200 Kg a 75°.</p><ul><li><strong>De Asalto:</strong> Tramos modulares de madera que se engarzan.</li><li><strong>Extensibles:</strong> De dos o más tramos deslizables con driza y poleas.</li><li><strong>De Gancho y Percha:</strong> Para colgarse de estructuras. <strong>Nunca</strong> deben usarse apoyadas en el suelo.</li></ul><h4>Líneas de Ataque</h4><ul><li><strong>Mangas:</strong> Tubos flexibles de poliéster y caucho para transportar agua a presión. Diámetros comunes: 1 ½”, 1 ¾” y 2 ½”.</li><li><strong>Lanzas (Pitones):</strong> Elemento terminal para dirigir y dar forma al chorro (pleno, niebla, etc.).</li><li><strong>Devanadera:</strong> Carretel con manguera semirrígida (1") para primer ataque rápido a alta presión.</li></ul><h4>Herramientas de Zapa y Entrada Forzada</h4><ul><li><strong>Manuales:</strong> Hacha de bombero, Barra Halligan y Mandarria.</li><li><strong>De Potencia:</strong> Equipo hidráulico ("Quijada de la Vida"), moto-trozadora y motosierra.</li></ul>` }
-        ];
 
-        // Función para renderizar los módulos de clase
-        function renderClasses() {
-            const container = document.getElementById('class-modules-container');
-            container.innerHTML = ''; // Limpiar el contenedor
-            classData.sort((a, b) => a.id - b.id); // Ordenar clases por número
-            classData.forEach(cls => {
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+
+    <script>
+        // =========================================================================================
+        // PASO 4: CONFIGURACIÓN DE FIREBASE - PEGÁ TU CÓDIGO AQUÍ
+        // =========================================================================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyCFVwR4yfU2pWgdlHkNEIi6QHMbpmFks7g",
+            authDomain: "guia-aspirantes2025.firebaseapp.com",
+            projectId: "guia-aspirantes2025",
+            storageBucket: "guia-aspirantes2025.firebasestorage.app",
+            messagingSenderId: "360441632014",
+            appId: "1:360441632014:web:4983f006aa4116b307f35f"
+            };
+        // =========================================================================================
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+        const classesCollection = db.collection("clases");
+        let originalContent = {};
+
+        // Iniciar sesión anónimamente
+        auth.signInAnonymously().catch(error => {
+            console.error("Error al iniciar sesión anónimamente:", error);
+        });
+
+        // Escuchar cambios en tiempo real
+        classesCollection.orderBy("id").onSnapshot(snapshot => {
+            const classModulesContainer = document.getElementById('class-modules-container');
+            classModulesContainer.innerHTML = '';
+            snapshot.forEach(doc => {
+                const cls = doc.data();
+                const docId = doc.id;
                 const classHtml = `
-                <details class="info-details" id="details-clase-${cls.id}">
+                <details class="info-details" id="details-${docId}">
                     <summary class="info-summary">
                         <span><i class="fas ${cls.icon || 'fa-book'} mr-3"></i>Clase ${cls.id}: ${cls.title}</span>
-                        <button class="edit-button" onclick="startEdit(event, 'content-clase-${cls.id}')">Modificar</button>
-                        <i class="fas fa-chevron-down summary-icon"></i>
+                        <div class="ml-auto flex items-center">
+                            <button class="edit-button" onclick="startEdit(event, '${docId}')">Modificar</button>
+                            <button class="delete-button action-button ml-2" onclick="deleteClass(event, '${docId}')"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <i class="fas fa-chevron-down summary-icon ml-2"></i>
                     </summary>
-                    <div id="content-clase-${cls.id}" class="details-content">
+                    <div id="content-${docId}" class="details-content">
                         ${cls.content}
                     </div>
-                    <div class="action-buttons" id="actions-clase-${cls.id}">
-                        <button class="undo-button action-button" onclick="undoChanges(event, 'content-clase-${cls.id}')">Deshacer</button>
-                        <button class="save-button action-button" onclick="saveChanges(event, 'content-clase-${cls.id}')">Guardar Cambios</button>
+                    <div class="editor-toolbar" id="toolbar-${docId}" style="display:none;">
+                         <button onmousedown="event.preventDefault(); formatDoc('content-${docId}', 'bold');"><i class="fas fa-bold"></i></button>
+                         <button onmousedown="event.preventDefault(); formatDoc('content-${docId}', 'italic');"><i class="fas fa-italic"></i></button>
+                         <button onmousedown="event.preventDefault(); formatDoc('content-${docId}', 'insertUnorderedList');"><i class="fas fa-list-ul"></i></button>
+                         <button onmousedown="event.preventDefault(); addMedia('imagen', 'content-${docId}');"><i class="fas fa-image"></i></button>
+                         <button onmousedown="event.preventDefault(); addMedia('video', 'content-${docId}');"><i class="fas fa-video"></i></button>
+                         <div class="color-picker-wrapper ml-2">
+                             <input type="color" class="color-picker" onchange="formatDoc('content-${docId}', 'foreColor', this.value)">
+                         </div>
+                    </div>
+                    <div class="action-buttons" id="actions-${docId}">
+                        <button class="undo-button action-button" onclick="undoChanges(event, '${docId}')">Deshacer</button>
+                        <button class="save-button action-button" onclick="saveChanges(event, '${docId}')">Guardar Cambios</button>
                     </div>
                 </details>`;
-                container.innerHTML += classHtml;
+                classModulesContainer.innerHTML += classHtml;
             });
-            
             document.querySelectorAll('.details-content').forEach(div => {
                 div.addEventListener('paste', handlePaste);
             });
-        }
-        
-        document.addEventListener('DOMContentLoaded', renderClasses);
+        });
 
-        function startEdit(event, contentId) {
+        function startEdit(event, docId) {
             event.preventDefault();
             event.stopPropagation();
-            const contentDiv = document.getElementById(contentId);
+            const contentDiv = document.getElementById(`content-${docId}`);
             const detailsElement = contentDiv.closest('.info-details');
             const actionsDiv = detailsElement.querySelector('.action-buttons');
             const editButton = detailsElement.querySelector('.edit-button');
+            const toolbar = detailsElement.querySelector('.editor-toolbar');
 
             if (!contentDiv.isContentEditable) {
-                originalContent[contentId] = contentDiv.innerHTML;
+                originalContent[docId] = contentDiv.innerHTML;
                 contentDiv.contentEditable = 'true';
                 contentDiv.classList.add('bg-yellow-100', 'outline', 'outline-2', 'outline-amber-500');
                 actionsDiv.style.display = 'block';
+                toolbar.style.display = 'flex';
                 editButton.style.display = 'none';
                 contentDiv.focus();
             }
         }
 
-        function saveChanges(event, contentId) {
-            const contentDiv = document.getElementById(contentId);
+        function saveChanges(event, docId) {
+            const contentDiv = document.getElementById(`content-${docId}`);
+            classesCollection.doc(docId).update({ content: contentDiv.innerHTML })
+                .then(() => {
+                    endEdit(docId);
+                    delete originalContent[docId];
+                })
+                .catch(error => console.error("Error al guardar cambios:", error));
+        }
+        
+        function undoChanges(event, docId) {
+            const contentDiv = document.getElementById(`content-${docId}`);
+            if (originalContent[docId]) {
+                contentDiv.innerHTML = originalContent[docId];
+            }
+            endEdit(docId);
+            delete originalContent[docId];
+        }
+        
+        function endEdit(docId) {
+            const contentDiv = document.getElementById(`content-${docId}`);
             const detailsElement = contentDiv.closest('.info-details');
             const actionsDiv = detailsElement.querySelector('.action-buttons');
             const editButton = detailsElement.querySelector('.edit-button');
-            const classId = parseInt(contentId.replace('content-clase-', ''));
-
-            contentDiv.contentEditable = 'false';
-            contentDiv.classList.remove('bg-yellow-100', 'outline', 'outline-2', 'outline-amber-500');
-            actionsDiv.style.display = 'none';
-            editButton.style.display = 'inline-block';
-            
-            const classIndex = classData.findIndex(c => c.id === classId);
-            if (classIndex !== -1) {
-                classData[classIndex].content = contentDiv.innerHTML;
-            }
-
-            delete originalContent[contentId];
-        }
-
-        function undoChanges(event, contentId) {
-            const contentDiv = document.getElementById(contentId);
-             const detailsElement = contentDiv.closest('.info-details');
-            const actionsDiv = detailsElement.querySelector('.action-buttons');
-            const editButton = detailsElement.querySelector('.edit-button');
-            
-            if (originalContent[contentId]) {
-                contentDiv.innerHTML = originalContent[contentId];
-            }
+            const toolbar = detailsElement.querySelector('.editor-toolbar');
             
             contentDiv.contentEditable = 'false';
             contentDiv.classList.remove('bg-yellow-100', 'outline', 'outline-2', 'outline-amber-500');
             actionsDiv.style.display = 'none';
+            toolbar.style.display = 'none';
             editButton.style.display = 'inline-block';
-            delete originalContent[contentId];
         }
 
+        function deleteClass(event, docId) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (confirm('¿Estás seguro de que quieres eliminar esta clase? Esta acción no se puede deshacer.')) {
+                classesCollection.doc(docId).delete().catch(error => console.error("Error al eliminar la clase:", error));
+            }
+        }
+        
         function formatDoc(editorId, command, value = null) {
             const editor = document.getElementById(editorId);
             editor.focus();
@@ -390,18 +359,24 @@
             if (type === 'imagen') {
                 embedHtml = `<img src="${url}" alt="Imagen insertada">`;
             } else if (type === 'video') {
-                let videoId = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-                if (videoId && videoId[1]) {
-                    embedHtml = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId[1]}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                let videoId;
+                if (url.includes('youtu.be/')) {
+                    videoId = url.split('youtu.be/')[1].split('?')[0];
+                } else if (url.includes('youtube.com/watch?v=')) {
+                    videoId = url.split('v=')[1].split('&')[0];
+                }
+                
+                if (videoId) {
+                    embedHtml = `<p><iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>`;
                 } else {
-                    alert('URL de YouTube no válida. Por favor, usa una URL como "https://www.youtube.com/watch?v=..."');
+                    alert('URL de YouTube no válida. Por favor, usa una URL como "https://www.youtube.com/watch?v=..." o "https://youtu.be/..."');
                     return;
                 }
             }
             editor.focus();
             document.execCommand('insertHTML', false, embedHtml);
         }
-        
+
         document.getElementById('add-class-button').addEventListener('click', () => {
             const numberInput = document.getElementById('new-class-number');
             const titleInput = document.getElementById('new-class-title');
@@ -418,34 +393,26 @@
                 return;
             }
             
-            const newClass = {
-                id: classNumber,
-                icon: 'fas ' + iconClass,
-                title: title,
-                content: content
-            };
+            const newClass = { id: classNumber, icon: 'fas ' + iconClass, title: title, content: content };
             
-            classData.push(newClass);
-            renderClasses();
-            
-            // Limpiar formulario
-            numberInput.value = '';
-            titleInput.value = '';
-            iconInput.value = '';
-            contentDiv.innerHTML = '<p>Escribe aquí el contenido de tu nueva clase. Puedes usar los botones de arriba para dar formato.</p>';
+            classesCollection.add(newClass).then(() => {
+                numberInput.value = '';
+                titleInput.value = '';
+                iconInput.value = '';
+                contentDiv.innerHTML = '<p>Escribe aquí el contenido de tu nueva clase...</p>';
+            }).catch(error => console.error("Error al agregar la clase:", error));
         });
-        
-        function handlePaste(e) {
-             e.preventDefault();
-             const pastedData = (e.clipboardData || window.clipboardData).getData('text/html');
-             const plainText = (e.clipboardData || window.clipboardData).getData('text/plain');
 
-             if (pastedData) {
-                // Inserta el HTML directamente, el navegador se encargará de mantener el formato
+        function handlePaste(e) {
+            e.preventDefault();
+            const pastedData = (e.clipboardData || window.clipboardData).getData('text/html');
+            const plainText = (e.clipboardData || window.clipboardData).getData('text/plain');
+            
+            if (pastedData) {
                 document.execCommand('insertHTML', false, pastedData);
-             } else {
+            } else {
                 document.execCommand('insertText', false, plainText);
-             }
+            }
         }
         
         // Dark Mode
@@ -480,6 +447,5 @@
             });
         }
     </script>
-
 </body>
 </html>
