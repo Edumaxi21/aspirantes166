@@ -282,6 +282,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
 
     <script>
+        
         // =========================================================================================
         // PASO 4: CONFIGURACIÓN DE FIREBASE - PEGÁ TU CÓDIGO AQUÍ
         // =========================================================================================
@@ -303,6 +304,12 @@
         const gamesCollection = db.collection("juegos");
         let originalContent = {};
 
+         // Script para el Splash Screen
+                document.getElementById('enter-app-button').addEventListener('click', () => {
+                    document.getElementById('splash-screen').style.display = 'none';
+                    document.getElementById('main-content').style.display = 'block';
+                });
+        
         // Iniciar sesión anónimamente
         auth.signInAnonymously().catch(error => {
             console.error("Error al iniciar sesión anónimamente:", error);
