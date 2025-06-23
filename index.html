@@ -86,6 +86,12 @@
         .custom-input { background-color: var(--input-bg-color); color: var(--input-text-color); border: 1px solid var(--border-color); }
         body.dark-mode .edit-button, body.dark-mode .editor-toolbar button { background-color: #4b5563; border-color: #6b7280; color: #e5e7eb; }
         body.dark-mode .edit-button:hover, body.dark-mode .editor-toolbar button:hover { background-color: #6b7280; }
+
+        /* Justo al final de tu bloque <style> */
+            #game-modal {
+                transition: opacity 0.3s ease;
+            }
+        
     </style>
 </head>
 <body class="bg-gray-100">
@@ -204,28 +210,38 @@
             <section id="add-game-section" class="mt-12">
                 <h3 class="text-2xl font-bold mb-4 section-title">Agregar Nuevo Juego</h3>
                <div class="theme-card p-6 rounded-lg shadow-lg">
-                    <div class="grid md:grid-cols-2 gap-4 mb-4">
-                        <div class="md:col-span-2">
-                            <label for="new-game-title" class="block text-sm font-bold mb-2">Título del Juego:</label>
-                            <input type="text" id="new-game-title" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: Sopa de Letras de Equipos">
-                        </div>
-                        <div class="md:col-span-2">
-                            <label for="new-game-url" class="block text-sm font-bold mb-2">URL del Juego:</label>
-                            <input type="text" id="new-game-url" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Pega aquí el enlace a tu juego">
-                        </div>
-                        <div class="md:col-span-2">
-                            <label for="new-game-description" class="block text-sm font-bold mb-2">Descripción Corta:</label>
-                            <textarea id="new-game-description" rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: Encuentra los nombres de las herramientas de zapa."></textarea>
-                        </div>
-                         <div>
-                            <label for="new-game-icon" class="block text-sm font-bold mb-2">Icono (Font Awesome):</label>
-                            <input type="text" id="new-game-icon" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: fas fa-gamepad">
-                        </div>
-                    </div>
-                    <button id="add-game-button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">
-                        <i class="fas fa-plus-circle mr-2"></i>Agregar Juego
-                    </button>
-                </div>
+                    <div class="theme-card p-6 rounded-lg shadow-lg">
+    <div class="grid grid-cols-1 gap-4 mb-4">
+        <div>
+            <label for="new-game-title" class="block text-sm font-bold mb-2">Título del Juego:</label>
+            <input type="text" id="new-game-title" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: Test de Equipos">
+        </div>
+         <div>
+            <label for="new-game-description" class="block text-sm font-bold mb-2">Descripción Corta:</label>
+            <input type="text" id="new-game-description" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: Un test rápido sobre EPP.">
+        </div>
+         <div>
+            <label for="new-game-icon" class="block text-sm font-bold mb-2">Icono (Font Awesome):</label>
+            <input type="text" id="new-game-icon" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: fas fa-vial">
+        </div>
+
+        <div>
+            <label for="new-game-html" class="block text-sm font-bold mb-2">Código HTML:</label>
+            <textarea id="new-game-html" rows="6" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input font-mono text-sm" placeholder="Pega aquí tu código HTML (solo el contenido de <body>)"></textarea>
+        </div>
+        <div>
+            <label for="new-game-css" class="block text-sm font-bold mb-2">Código CSS:</label>
+            <textarea id="new-game-css" rows="6" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input font-mono text-sm" placeholder="Pega aquí tu código CSS"></textarea>
+        </div>
+        <div>
+            <label for="new-game-js" class="block text-sm font-bold mb-2">Código JavaScript:</label>
+            <textarea id="new-game-js" rows="6" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input font-mono text-sm" placeholder="Pega aquí tu código JavaScript"></textarea>
+        </div>
+    </div>
+    <button id="add-game-button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">
+        <i class="fas fa-plus-circle mr-2"></i>Agregar Juego
+    </button>
+</div>
             </section>
         </main>
         
@@ -242,14 +258,27 @@
                         <span class="slider"></span>
                     </label>
                 </div>
-                <div class="footer-links mb-4">
-                    <a href="https://www.instagram.com/maxiperez19" target="_blank" class="mx-2 hover:text-red-500"><i class="fab fa-instagram mr-1"></i>@maxiperez19</a>
-                    <a href="mailto:edumaxi21@gmail.com" class="mx-2 hover:text-red-500"><i class="fas fa-envelope mr-1"></i>edumaxi21@gmail.com</a>
-                </div>
-                <p class="text-gray-400 mt-2">Sacrificio, Valor y Abnegación.</p>
-                <p class="text-xs text-gray-500 mt-6">Sitio de estudio para Aspirantes a Bomberos Voluntarios 2025.</p>
-                <p class="text-xs text-gray-600 mt-2">Página desarrollada por Gemini.</p>
-            </div>
+                                <div class="footer-links mb-4">
+                                    <a href="https://www.instagram.com/maxiperez19" target="_blank" class="mx-2 hover:text-red-500"><i class="fab fa-instagram mr-1"></i>@maxiperez19</a>
+                                    <a href="mailto:edumaxi21@gmail.com" class="mx-2 hover:text-red-500"><i class="fas fa-envelope mr-1"></i>edumaxi21@gmail.com</a>
+                                </div>
+                                <p class="text-gray-400 mt-2">Sacrificio, Valor y Abnegación.</p>
+                                <p class="text-xs text-gray-500 mt-6">Sitio de estudio para Aspirantes a Bomberos Voluntarios 2025.</p>
+                                <p class="text-xs text-gray-600 mt-2">Página desarrollada por Gemini.</p>
+                            </div>
+                    
+                            <div id="game-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex justify-center items-center p-4">
+                    <div class="bg-gray-800 w-full h-full max-w-6xl rounded-lg shadow-xl flex flex-col">
+                        <div class="flex justify-between items-center p-2 border-b border-gray-700">
+                            <h3 id="game-modal-title" class="text-white text-lg font-bold"></h3>
+                            <button id="close-modal-button" class="text-white text-2xl font-bold hover:text-red-500">&times;</button>
+                        </div>
+                        <div class="flex-grow p-1">
+                            <iframe id="game-canvas-iframe" class="w-full h-full border-0 bg-white" sandbox="allow-scripts allow-same-origin"></iframe>
+                        </div>
+                    </div>
+                </div>        
+            
         </footer>
     </div>
 
@@ -461,8 +490,9 @@
             }
         }
         // Escuchar cambios en la colección de JUEGOS
-                gamesCollection.onSnapshot(snapshot => {
+                gamesCollection.orderBy("createdAt", "desc").onSnapshot(snapshot => {
                     const gamesContainer = document.getElementById('games-container');
+                    if (!gamesContainer) return;
                     gamesContainer.innerHTML = ''; // Limpiar contenedor
                     snapshot.forEach(doc => {
                         const game = doc.data();
@@ -472,7 +502,7 @@
                             <div class="p-6">
                                 <h4 class="font-bold text-xl mb-2 flex items-center">
                                     <i class="${game.icon || 'fas fa-gamepad'} mr-3 text-red-500"></i>
-                                    ${game.title}
+                                    <span class="math-inline">\{game\.title\}
                                 </h4>
                                 <p class="text-gray-600 text-base mb-4">${game.description}</p>
                                 <a href="${game.url}" target="_blank" class="inline-block bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600">
@@ -521,37 +551,28 @@
         }
 
         // Event listener para el botón de AGREGAR JUEGO
-document.getElementById('add-game-button').addEventListener('click', () => {
-    const titleInput = document.getElementById('new-game-title');
-    const urlInput = document.getElementById('new-game-url');
-    const descriptionInput = document.getElementById('new-game-description');
-    const iconInput = document.getElementById('new-game-icon');
-
-    const title = titleInput.value;
-    const url = urlInput.value;
-    const description = descriptionInput.value;
-    const icon = iconInput.value.trim() || 'fas fa-gamepad';
-
-    if (!title || !url || !description) {
-        alert('Por favor, completa todos los campos del juego.');
-        return;
-    }
-
-    const newGame = {
-        title: title,
-        url: url,
-        description: description,
-        icon: icon,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp() // Para ordenar por fecha si quieres
-    };
-
-    gamesCollection.add(newGame).then(() => {
-        titleInput.value = '';
-        urlInput.value = '';
-        descriptionInput.value = '';
-        iconInput.value = '';
-    }).catch(error => console.error("Error al agregar el juego:", error));
-});
+                document.getElementById('add-game-button').addEventListener('click', () => {
+                    const title = document.getElementById('new-game-title').value;
+                    const description = document.getElementById('new-game-description').value;
+                    const icon = document.getElementById('new-game-icon').value.trim() || 'fas fa-gamepad';
+                    const htmlCode = document.getElementById('new-game-html').value;
+                    const cssCode = document.getElementById('new-game-css').value;
+                    const jsCode = document.getElementById('new-game-js').value;
+                
+                    if (!title || !htmlCode) {
+                        alert('Por favor, completa al menos el título y el código HTML del juego.');
+                        return;
+                    }
+                
+                    const newGame = {
+                        title, description, icon, htmlCode, cssCode, jsCode,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    };
+                
+                    gamesCollection.add(newGame).then(() => {
+                        ['new-game-title', 'new-game-description', 'new-game-icon', 'new-game-html', 'new-game-css', 'new-game-js'].forEach(id => document.getElementById(id).value = '');
+                    }).catch(error => console.error("Error al agregar el juego:", error));
+                });
 
 // Función para ELIMINAR un juego
 function deleteGame(docId) {
@@ -559,6 +580,65 @@ function deleteGame(docId) {
         gamesCollection.doc(docId).delete().catch(error => console.error("Error al eliminar el juego:", error));
     }
 }
+        // --- NUEVAS FUNCIONES PARA EL CANVAS DEL JUEGO ---
+
+const gameModal = document.getElementById('game-modal');
+const closeModalButton = document.getElementById('close-modal-button');
+const gameCanvasIframe = document.getElementById('game-canvas-iframe');
+const gameModalTitle = document.getElementById('game-modal-title');
+
+// Función para construir el contenido del Iframe
+function buildSrcDoc(html, css, js) {
+    return `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                body { margin: 0; font-family: sans-serif; }
+                ${css}
+            </style>
+        </head>
+        <body>
+            ${html}
+            <script>
+                try {
+                    ${js}
+                } catch (err) {
+                    document.body.innerHTML = '<div style="color: red; padding: 10px;">Error en el script: ' + err + '</div>';
+                }
+            <\/script>
+        </body>
+        </html>
+    `;
+}
+
+// Función que se llama al hacer clic en "Abrir Juego"
+function openGameInCanvas(gameId) {
+    gamesCollection.doc(gameId).get().then(doc => {
+        if (doc.exists) {
+            const game = doc.data();
+            gameModalTitle.textContent = game.title;
+            const srcDoc = buildSrcDoc(game.htmlCode, game.cssCode, game.jsCode);
+            gameCanvasIframe.srcdoc = srcDoc;
+            gameModal.classList.remove('hidden');
+        } else {
+            alert("Error: No se encontró el juego.");
+        }
+    }).catch(error => console.error("Error al obtener el juego:", error));
+}
+
+// Lógica para cerrar el modal
+closeModalButton.addEventListener('click', () => {
+    gameModal.classList.add('hidden');
+    gameCanvasIframe.srcdoc = ''; // Limpiar el iframe para detener cualquier script
+});
+
+// Opcional: Cerrar el modal al hacer clic fuera de él
+gameModal.addEventListener('click', (event) => {
+    if (event.target === gameModal) {
+        closeModalButton.click();
+    }
+});
     </script>
 </body>
 </html>
