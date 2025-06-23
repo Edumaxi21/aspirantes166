@@ -605,6 +605,30 @@ gameModal.addEventListener('click', (event) => {
         closeModalButton.click();
     }
 });
+
+        // --- LÓGICA PARA CONTROLAR EL MODAL DEL JUEGO ---
+
+    const gameModal = document.getElementById('game-modal');
+    const closeModalButton = document.getElementById('close-modal-button');
+    const gameCanvasIframe = document.getElementById('game-canvas-iframe');
+    const gameModalTitle = document.getElementById('game-modal-title');
+
+    // 1. Lógica para que el botón '×' funcione
+    closeModalButton.addEventListener('click', () => {
+        gameModal.classList.add('hidden');
+        // Limpiamos el iframe para detener cualquier sonido o script del juego
+        gameCanvasIframe.srcdoc = ''; 
+    });
+
+    // 2. Lógica para poder cerrar el juego haciendo clic en el fondo oscuro
+    gameModal.addEventListener('click', (event) => {
+        // Si el clic fue sobre el fondo del modal (el área oscura)
+        if (event.target === gameModal) {
+            // Simulamos un clic en el botón de cerrar
+            closeModalButton.click();
+        }
+    });
+        
     </script>
 </body>
 </html>
