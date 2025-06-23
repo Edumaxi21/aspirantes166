@@ -209,8 +209,10 @@
 
             <section id="add-game-section" class="mt-12">
                 <h3 class="text-2xl font-bold mb-4 section-title">Agregar Nuevo Juego</h3>
-               <div class="theme-card p-6 rounded-lg shadow-lg">
-                    <div class="theme-card p-6 rounded-lg shadow-lg">
+              <div class="theme-card p-6 rounded-lg shadow-lg">
+    </div>
+
+<div class="theme-card p-6 rounded-lg shadow-lg">
     <div class="grid grid-cols-1 gap-4 mb-4">
         <div>
             <label for="new-game-title" class="block text-sm font-bold mb-2">Título del Juego:</label>
@@ -226,16 +228,8 @@
         </div>
 
         <div>
-            <label for="new-game-html" class="block text-sm font-bold mb-2">Código HTML:</label>
-            <textarea id="new-game-html" rows="6" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input font-mono text-sm" placeholder="Pega aquí tu código HTML (solo el contenido de <body>)"></textarea>
-        </div>
-        <div>
-            <label for="new-game-css" class="block text-sm font-bold mb-2">Código CSS:</label>
-            <textarea id="new-game-css" rows="6" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input font-mono text-sm" placeholder="Pega aquí tu código CSS"></textarea>
-        </div>
-        <div>
-            <label for="new-game-js" class="block text-sm font-bold mb-2">Código JavaScript:</label>
-            <textarea id="new-game-js" rows="6" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input font-mono text-sm" placeholder="Pega aquí tu código JavaScript"></textarea>
+            <label for="new-game-full-code" class="block text-sm font-bold mb-2">Código Completo del Juego:</label>
+            <textarea id="new-game-full-code" rows="10" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input font-mono text-sm" placeholder="Pega aquí tu código completo (HTML, CSS y JS en un solo bloque)"></textarea>
         </div>
     </div>
     <button id="add-game-button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">
@@ -552,27 +546,25 @@
 
         // Event listener para el botón de AGREGAR JUEGO
                 document.getElementById('add-game-button').addEventListener('click', () => {
-                    const title = document.getElementById('new-game-title').value;
-                    const description = document.getElementById('new-game-description').value;
-                    const icon = document.getElementById('new-game-icon').value.trim() || 'fas fa-gamepad';
-                    const htmlCode = document.getElementById('new-game-html').value;
-                    const cssCode = document.getElementById('new-game-css').value;
-                    const jsCode = document.getElementById('new-game-js').value;
-                
-                    if (!title || !htmlCode) {
-                        alert('Por favor, completa al menos el título y el código HTML del juego.');
-                        return;
-                    }
-                
-                    const newGame = {
-                        title, description, icon, htmlCode, cssCode, jsCode,
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                    };
-                
-                    gamesCollection.add(newGame).then(() => {
-                        ['new-game-title', 'new-game-description', 'new-game-icon', 'new-game-html', 'new-game-css', 'new-game-js'].forEach(id => document.getElementById(id).value = '');
-                    }).catch(error => console.error("Error al agregar el juego:", error));
-                });
+    const title = document.getElementById('new-game-title').value;
+    const description = document.getElementById('new-game-description').value;
+    const icon = document.getElementById('new-game-icon').value.trim() || 'fas fa-gamepad';
+    const fullCode = document.getElementById('new-game-full-code').value;
+
+    if (!title || !fullCode) {
+        alert('Por favor, completa al menos el título y el código del juego.');
+        return;
+    }
+
+    const newGame = {
+        title, description, icon, fullCode,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+
+    gamesCollection.add(newGame).then(() => {
+        ['new-game-title', 'new-game-description', 'new-game-icon', 'new-game-full-code'].forEach(id => document.getElementById(id).value = '');
+    }).catch(error => console.error("Error al agregar el juego:", error));
+});
 
 // Función para ELIMINAR un juego
 function deleteGame(docId) {
@@ -588,29 +580,7 @@ const gameCanvasIframe = document.getElementById('game-canvas-iframe');
 const gameModalTitle = document.getElementById('game-modal-title');
 
 // Función para construir el contenido del Iframe
-function buildSrcDoc(html, css, js) {
-    return `
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <style>
-                body { margin: 0; font-family: sans-serif; }
-                ${css}
-            </style>
-        </head>
-        <body>
-            ${html}
-            <script>
-                try {
-                    ${js}
-                } catch (err) {
-                    document.body.innerHTML = '<div style="color: red; padding: 10px;">Error en el script: ' + err + '</div>';
-                }
-            <\/script>
-        </body>
-        </html>
-    `;
-}
+
 
 // Función que se llama al hacer clic en "Abrir Juego"
 function openGameInCanvas(gameId) {
@@ -618,20 +588,16 @@ function openGameInCanvas(gameId) {
         if (doc.exists) {
             const game = doc.data();
             gameModalTitle.textContent = game.title;
-            const srcDoc = buildSrcDoc(game.htmlCode, game.cssCode, game.jsCode);
-            gameCanvasIframe.srcdoc = srcDoc;
+
+            // La magia está aquí: se asigna directamente el código completo
+            gameCanvasIframe.srcdoc = game.fullCode; 
+
             gameModal.classList.remove('hidden');
         } else {
             alert("Error: No se encontró el juego.");
         }
     }).catch(error => console.error("Error al obtener el juego:", error));
 }
-
-// Lógica para cerrar el modal
-closeModalButton.addEventListener('click', () => {
-    gameModal.classList.add('hidden');
-    gameCanvasIframe.srcdoc = ''; // Limpiar el iframe para detener cualquier script
-});
 
 // Opcional: Cerrar el modal al hacer clic fuera de él
 gameModal.addEventListener('click', (event) => {
