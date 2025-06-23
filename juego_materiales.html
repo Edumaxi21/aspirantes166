@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío del Aspirante: Cuestionario Integral (v4)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        h1, h2, h3 {
+            font-family: 'Roboto Slab', serif;
+        }
+        .quiz-container {
+            background-color: #1f2937; /* gray-800 */
+            border: 2px solid #dc2626; /* red-600 */
+        }
+        .btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .option-btn {
+            border: 2px solid #4b5563; /* gray-600 */
+        }
+        .option-btn:hover:not(:disabled) {
+            background-color: #374151; /* gray-700 */
+            border-color: #6b7280; /* gray-500 */
+        }
+        .option-btn.correct {
+            background-color: #166534; /* green-800 */
+            border-color: #22c55e; /* green-500 */
+            color: white;
+        }
+        .option-btn.incorrect {
+            background-color: #991b1b; /* red-800 */
+            border-color: #ef4444; /* red-500 */
+            color: white;
+        }
+        .option-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.9;
+        }
+        #feedback-text {
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            min-height: 50px;
+        }
+        .input-field.correct {
+            background-color: #166534;
+            border-color: #22c55e;
+        }
+        .input-field.incorrect {
+            background-color: #991b1b;
+            border-color: #ef4444;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 flex items-center justify-center min-h-screen p-4">
+
+    <div class="quiz-container rounded-2xl shadow-2xl p-6 md:p-8 w-full max-w-2xl mx-auto">
+
+        <!-- Start Screen -->
+        <div id="start-screen" class="text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-red-500 mb-4">Desafío del Aspirante</h1>
+            <p class="text-gray-300 mb-8">Pon a prueba tus conocimientos. Se seleccionarán 10 preguntas al azar de un gran banco de temas. ¿Estás listo?</p>
+            <button id="start-btn" class="btn bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg text-xl">
+                ¡Comenzar!
+            </button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="hidden">
+            <div id="hud" class="flex justify-between items-center mb-4">
+                <p id="progress-text" class="text-lg">Pregunta 1 / 10</p>
+                <p id="score-text" class="text-lg font-bold text-green-400">Puntaje: 0</p>
+            </div>
+            <div id="question-container" class="mb-6">
+                <h2 id="question" class="text-xl md:text-2xl font-bold mb-6 min-h-[90px] flex items-center justify-center text-center bg-gray-900 p-4 rounded-lg"></h2>
+                <div id="answer-options" class="space-y-3">
+                    <!-- Options will be dynamically inserted here -->
+                </div>
+            </div>
+            <div id="feedback-container" class="mt-4 hidden">
+                <p id="feedback-text"></p>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button id="next-btn" class="btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg hidden">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- End Screen -->
+        <div id="end-screen" class="text-center hidden">
+            <h1 class="text-3xl md:text-4xl font-bold text-green-500 mb-4">¡Prueba Completada!</h1>
+            <p class="text-xl mb-2">Tu resultado final es:</p>
+            <p id="final-score" class="text-5xl font-bold my-6"></p>
+            <p id="final-feedback" class="text-lg mb-8"></p>
+            <div class="flex justify-center gap-4">
+                <button id="restart-btn" class="btn bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg text-lg">
+                    Intentar de Nuevo
+                </button>
+                <button id="review-btn" class="btn bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-6 rounded-lg text-lg">
+                    Ver Revisión
+                </button>
+            </div>
+        </div>
+        
+        <!-- Review Screen -->
+        <div id="review-screen" class="hidden">
+            <h1 class="text-3xl text-center md:text-4xl font-bold text-yellow-500 mb-6">Revisión de Respuestas</h1>
+            <div id="review-container" class="space-y-4 text-left max-h-[60vh] overflow-y-auto pr-2">
+                <!-- Review items will be dynamically inserted here -->
+            </div>
+            <div class="mt-8 flex justify-center gap-4">
+                 <button id="restart-from-review-btn" class="btn bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg text-xl">
+                    Jugar de Nuevo
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+    // --- QUESTION BANK ---
+    const questions = [
+        // Lanzas
+        {
+            question: "En una lanza de espuma, la mezcla de agua y emulsor pasa por una cámara de ________ para generar la espuma.",
+            type: 'input',
+            answer: "turbulencia",
+            explanation: "La cámara de turbulencia y la succión de aire son claves para la formación de la espuma."
+        },
+        {
+            question: "Una lanza de alta presión se utiliza típicamente en mangas (devanaderas) de:",
+            type: 'multiple-choice',
+            options: ["63,5 mm y 51 mm", "45 mm y 38 mm", "19 mm y 13 mm", "75 mm y 100 mm"],
+            answer: "19 mm y 13 mm",
+            explanation: "Las lanzas de alta presión trabajan con bajo caudal y se usan en mangas de diámetro reducido."
+        },
+        {
+            question: "El selector de efecto en una lanza moderna permite cambiar entre chorro pleno, niebla y ______.",
+            type: 'input',
+            answer: "lluvia",
+            explanation: "Las lanzas modernas ofrecen varios patrones de agua para adaptarse a distintas situaciones de incendio."
+        },
+        // Mangas
+        {
+            question: "La 'trama' de una manga (hilos transversales) es la que le otorga principalmente:",
+            type: 'multiple-choice',
+            options: ["Flexibilidad y vibración", "Resistencia a la presión", "Color", "Impermeabilidad"],
+            answer: "Resistencia a la presión",
+            explanation: "La trama soporta la fuerza del agua, mientras que la urdimbre (hilos longitudinales) da flexibilidad."
+        },
+        {
+            question: "Acondicionar las mangas en 'zig-zag' en la autobomba se denomina:",
+            type: 'input',
+            answer: "estiba",
+            explanation: "La estiba (sea en zig-zag o Cleveland) permite un despliegue rápido de la línea."
+        },
+        {
+            question: "Una manga de 1 ½ pulgadas equivale a ______ mm de diámetro.",
+            type: 'multiple-choice',
+            options: ["25.4 mm", "51.0 mm", "38.0 mm", "45.0 mm"],
+            answer: "38.0 mm",
+            explanation: "1 ½ pulgadas (38 mm) es un diámetro muy versátil para líneas de ataque."
+        },
+        // Uniones
+        {
+            question: "Las uniones roscadas más comunes en Argentina son del tipo 'Whitworth', con 5 hilos por pulgada.",
+            type: 'true-false',
+            options: ["Verdadero", "Falso"],
+            answer: "Verdadero",
+            explanation: "Este es el estándar más extendido en el país, a diferencia de otras normas internacionales."
+        },
+        {
+            question: "El elemento de goma que asegura la hermeticidad en una unión se llama:",
+            type: 'multiple-choice',
+            options: ["Anilla giratoria", "Regatón", "Junta o rodete", "Prensaestopa"],
+            answer: "Junta o rodete",
+            explanation: "La junta o rodete es fundamental para evitar pérdidas de agua en las conexiones."
+        },
+        // Gemelos
+        {
+            question: "Para abastecer la succión de una autobomba con varias líneas de menor diámetro, se utiliza un:",
+            type: 'multiple-choice',
+            options: ["Gemelo divergente", "Ladrón", "Colector", "Reductor"],
+            answer: "Colector",
+            explanation: "El colector reúne el caudal de varias líneas en una sola toma para la bomba."
+        },
+        {
+            question: "Un gemelo CONVERGENTE se usa para fusionar dos líneas en una, generalmente para aumentar presión y caudal.",
+            type: 'true-false',
+            options: ["Verdadero", "Falso"],
+            answer: "Verdadero",
+            explanation: "Es la operación inversa al gemelo divergente y se usa para mejorar un suministro de agua deficiente."
+        },
+        // Hidrantes y Columnas
+        {
+            question: "El dispositivo que se coloca en el extremo de un conducto de succión para impedir el paso de sólidos es el:",
+            type: 'input',
+            answer: "colador",
+            explanation: "El colador (o filtro) es esencial para proteger la bomba de daños al aspirar de fuentes abiertas."
+        },
+        {
+            question: "La función de la llave interior en una columna es empujar la bola del hidrante para permitir el paso del agua.",
+            type: 'true-false',
+            options: ["Verdadero", "Falso"],
+            answer: "Verdadero",
+            explanation: "La llave interior, con su vástago y plato, opera el mecanismo del hidrante de piso."
+        },
+        // Tendidos y líneas
+        {
+            question: "La línea que se tiende desde una cisterna a una unidad de ataque para reabastecerla se denomina:",
+            type: 'multiple-choice',
+            options: ["Línea de Ataque", "Línea de Alimentación", "Línea Directa", "Línea de Transferencia"],
+            answer: "Línea de Transferencia",
+            explanation: "Su objetivo es transferir agua entre vehículos."
+        },
+        {
+            question: "Cuando la necesidad de agua es baja, se puede atacar un incendio con una línea conectada directamente a la red hídrica. Esta es una Línea _______.",
+            type: 'input',
+            answer: "directa",
+            explanation: "La línea directa no pasa por la bomba de una unidad, usando solo la presión de la red."
+        },
+        // Herramientas Manuales
+        {
+            question: "La herramienta de entrada forzada que consiste en un cilindro pesado con agarres y se usa para golpear puertas es el:",
+            type: 'multiple-choice',
+            options: ["Hooligan", "Maza", "Ariete", "Barreta"],
+            answer: "Ariete",
+            explanation: "El ariete es una herramienta de impacto diseñada específicamente para derribar puertas."
+        },
+        {
+            question: "La 'Hacha Force' es una herramienta metálica especialmente efectiva para tareas de:",
+            type: 'multiple-choice',
+            options: ["Demolición de paredes", "Corte de árboles", "Rescate Vehicular", "Apertura de techos de madera"],
+            answer: "Rescate Vehicular",
+            explanation: "Permite cortar techos, parantes y paneles de vehículos con gran eficacia."
+        },
+        // Material de Zapa
+        {
+            question: "Las herramientas de zapa se utilizan principalmente DURANTE las tareas de extinción.",
+            type: 'true-false',
+            options: ["Verdadero", "Falso"],
+            answer: "Falso",
+            explanation: "Se usan mayormente en tareas de remoción, ventilación y demolición, que suelen ser posteriores o paralelas a la extinción."
+        },
+        {
+            question: "El ______ es una herramienta de zapa con punta y gancho, muy útil para remover cielorrasos.",
+            type: 'input',
+            answer: "bichero",
+            explanation: "El bichero es ideal para tareas de remoción y demolición por encima de la cabeza."
+        },
+        // Escaleras
+        {
+            question: "Para ventilar una habitación, la escalera debe colocarse del lado de _______ (por donde viene el viento).",
+            type: 'input',
+            answer: "barlovento",
+            explanation: "Esto asegura que el humo y los gases calientes se alejen del bombero que realiza la ventilación."
+        },
+        {
+            question: "El mecanismo con una uñeta de seguridad que traba los tramos de una escalera extensible se llama:",
+            type: 'multiple-choice',
+            options: ["Guía", "Zapata", "Trinquetes", "Trabapeldaño"],
+            answer: "Trabapeldaño",
+            explanation: "Es un componente de seguridad crucial que se debe verificar siempre antes de subir."
+        },
+        {
+            question: "Al transportar una escalera entre dos bomberos, ambos deben situarse del mismo lado.",
+            type: 'true-false',
+            options: ["Verdadero", "Falso"],
+            answer: "Verdadero",
+            explanation: "Ya sea con el método de brazos extendidos o de cadera, ambos bomberos se ubican del mismo lado para un transporte coordinado y seguro."
+        }
+    ];
+
+    // --- DOM ELEMENTS ---
+    const startScreen = document.getElementById('start-screen');
+    const quizScreen = document.getElementById('quiz-screen');
+    const endScreen = document.getElementById('end-screen');
+    const reviewScreen = document.getElementById('review-screen');
+    
+    const startBtn = document.getElementById('start-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const restartBtn = document.getElementById('restart-btn');
+    const reviewBtn = document.getElementById('review-btn');
+    const restartFromReviewBtn = document.getElementById('restart-from-review-btn');
+
+    const questionEl = document.getElementById('question');
+    const answerOptionsEl = document.getElementById('answer-options');
+    const feedbackContainerEl = document.getElementById('feedback-container');
+    const feedbackTextEl = document.getElementById('feedback-text');
+    const progressTextEl = document.getElementById('progress-text');
+    const scoreTextEl = document.getElementById('score-text');
+    const finalScoreEl = document.getElementById('final-score');
+    const finalFeedbackEl = document.getElementById('final-feedback');
+
+    // --- GAME STATE ---
+    let questionsForThisGame, currentQuestionIndex, score;
+    let gameResults = [];
+    const QUESTIONS_PER_GAME = 10;
+
+    // --- FUNCTIONS ---
+    function startGame() {
+        startScreen.classList.add('hidden');
+        endScreen.classList.add('hidden');
+        reviewScreen.classList.add('hidden');
+        quizScreen.classList.remove('hidden');
+        
+        const shuffled = [...questions].sort(() => Math.random() - 0.5);
+        questionsForThisGame = shuffled.slice(0, QUESTIONS_PER_GAME);
+        
+        currentQuestionIndex = 0;
+        score = 0;
+        gameResults = [];
+        scoreTextEl.innerText = `Puntaje: ${score}`;
+        progressTextEl.innerText = `Pregunta ${currentQuestionIndex + 1} / ${QUESTIONS_PER_GAME}`;
+        
+        showQuestion();
+    }
+
+    function showQuestion() {
+        resetState();
+        const currentQuestion = questionsForThisGame[currentQuestionIndex];
+        
+        questionEl.innerText = currentQuestion.question;
+
+        if (currentQuestion.type === 'multiple-choice' || currentQuestion.type === 'true-false') {
+            currentQuestion.options.forEach(option => {
+                const button = document.createElement('button');
+                button.innerText = option;
+                button.classList.add('option-btn', 'btn', 'w-full', 'text-left', 'p-3', 'rounded-lg', 'bg-gray-800');
+                button.addEventListener('click', selectAnswer);
+                answerOptionsEl.appendChild(button);
+            });
+        } else if (currentQuestion.type === 'input') {
+            const inputContainer = document.createElement('div');
+            inputContainer.classList.add('flex', 'gap-2');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.classList.add('input-field', 'w-full', 'p-3', 'rounded-lg', 'bg-gray-900', 'border-2', 'border-gray-600', 'focus:border-blue-500', 'focus:outline-none');
+            input.placeholder = "Escribe tu respuesta...";
+            const button = document.createElement('button');
+            button.innerText = 'Confirmar';
+            button.classList.add('btn', 'bg-blue-600', 'hover:bg-blue-700', 'text-white', 'font-bold', 'py-2', 'px-4', 'rounded-lg');
+            
+            button.addEventListener('click', () => checkInputAnswer(input));
+            input.addEventListener('keypress', (e) => {
+                if(e.key === 'Enter' && !input.disabled) checkInputAnswer(input);
+            });
+
+            inputContainer.appendChild(input);
+            inputContainer.appendChild(button);
+            answerOptionsEl.appendChild(inputContainer);
+            input.focus();
+        }
+    }
+    
+    function resetState() {
+        nextBtn.classList.add('hidden');
+        feedbackContainerEl.classList.add('hidden');
+        feedbackTextEl.innerHTML = '';
+        while (answerOptionsEl.firstChild) {
+            answerOptionsEl.removeChild(answerOptionsEl.firstChild);
+        }
+    }
+
+    function selectAnswer(e) {
+        const selectedBtn = e.target;
+        const correct = selectedBtn.innerText.toLowerCase() === questionsForThisGame[currentQuestionIndex].answer.toLowerCase();
+        processAnswer(correct, selectedBtn.innerText, selectedBtn);
+    }
+    
+    function checkInputAnswer(inputElement) {
+        const userAnswer = inputElement.value.trim();
+        if(userAnswer === '') return;
+        const correctAnswer = questionsForThisGame[currentQuestionIndex].answer.toLowerCase();
+        const correct = userAnswer.toLowerCase() === correctAnswer;
+        processAnswer(correct, userAnswer, inputElement.parentElement);
+    }
+
+    function processAnswer(isCorrect, userAnswer, selectedElement) {
+        const currentQuestion = questionsForThisGame[currentQuestionIndex];
+        if (isCorrect) {
+            score++;
+            scoreTextEl.innerText = `Puntaje: ${score}`;
+            feedbackTextEl.innerHTML = `<span class="font-bold text-green-400">¡Correcto!</span> ${currentQuestion.explanation}`;
+        } else {
+             feedbackTextEl.innerHTML = `<span class="font-bold text-red-400">¡Incorrecto!</span> La respuesta correcta es <span class="font-bold">'${currentQuestion.answer}'</span>. <br> ${currentQuestion.explanation}`;
+        }
+        
+        gameResults.push({
+            question: currentQuestion.question,
+            userAnswer: userAnswer,
+            correctAnswer: currentQuestion.answer,
+            isCorrect: isCorrect
+        });
+
+        feedbackContainerEl.classList.remove('hidden');
+        
+        const correctAnswerText = currentQuestion.answer;
+
+        if (currentQuestion.type !== 'input') {
+             Array.from(answerOptionsEl.children).forEach(button => {
+                button.disabled = true;
+                if (button.innerText.toLowerCase() === correctAnswerText.toLowerCase()) {
+                    button.classList.add('correct');
+                } else if (button === selectedElement) {
+                    button.classList.add('incorrect');
+                }
+            });
+        } else {
+            const inputField = selectedElement.querySelector('input');
+            const confirmBtn = selectedElement.querySelector('button');
+            inputField.disabled = true;
+            confirmBtn.disabled = true;
+            if (isCorrect) {
+                inputField.classList.add('correct');
+            } else {
+                inputField.classList.add('incorrect');
+            }
+        }
+        
+        if (questionsForThisGame.length > currentQuestionIndex + 1) {
+            nextBtn.classList.remove('hidden');
+        } else {
+            setTimeout(showEndScreen, 2000);
+        }
+    }
+
+    function showNextQuestion() {
+        currentQuestionIndex++;
+        progressTextEl.innerText = `Pregunta ${currentQuestionIndex + 1} / ${QUESTIONS_PER_GAME}`;
+        showQuestion();
+    }
+    
+    function showEndScreen() {
+        quizScreen.classList.add('hidden');
+        endScreen.classList.remove('hidden');
+        const scorePercent = Math.round((score / QUESTIONS_PER_GAME) * 100);
+        finalScoreEl.innerText = `${scorePercent}%`;
+        
+        let feedback = '';
+        if (scorePercent === 100) {
+            feedback = "¡Impresionante! Tienes el conocimiento de un bombero experimentado.";
+            finalScoreEl.className = 'text-5xl font-bold my-6 text-green-500';
+        } else if (scorePercent >= 70) {
+            feedback = "¡Muy buen trabajo! Estás en el camino correcto para ser un excelente bombero.";
+            finalScoreEl.className = 'text-5xl font-bold my-6 text-yellow-500';
+        } else {
+            feedback = "Sigue estudiando y practicando. ¡La perseverancia es clave en esta vocación!";
+            finalScoreEl.className = 'text-5xl font-bold my-6 text-red-500';
+        }
+        finalFeedbackEl.innerText = feedback;
+    }
+
+    function showReview() {
+        endScreen.classList.add('hidden');
+        reviewScreen.classList.remove('hidden');
+
+        const reviewContainer = document.getElementById('review-container');
+        reviewContainer.innerHTML = ''; 
+
+        gameResults.forEach((result, index) => {
+            const resultEl = document.createElement('div');
+            resultEl.classList.add('p-4', 'rounded-lg', 'bg-gray-900');
+            
+            let answerHTML = '';
+            if (result.isCorrect) {
+                answerHTML = `<p class="mt-2">Tu respuesta: <span class="font-bold text-green-400">${result.userAnswer}</span></p>`;
+            } else {
+                answerHTML = `
+                    <p class="mt-2">Tu respuesta: <span class="font-bold text-red-400">${result.userAnswer}</span></p>
+                    <p>Respuesta correcta: <span class="font-bold text-green-400">${result.correctAnswer}</span></p>
+                `;
+            }
+
+            resultEl.innerHTML = `
+                <p class="font-bold">${index + 1}. ${result.question}</p>
+                ${answerHTML}
+            `;
+            reviewContainer.appendChild(resultEl);
+        });
+    }
+
+    // --- EVENT LISTENERS ---
+    startBtn.addEventListener('click', startGame);
+    nextBtn.addEventListener('click', showNextQuestion);
+    restartBtn.addEventListener('click', startGame);
+    reviewBtn.addEventListener('click', showReview);
+    restartFromReviewBtn.addEventListener('click', startGame);
+
+    </script>
+</body>
+</html>

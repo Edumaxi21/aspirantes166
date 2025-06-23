@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torre Radial - Aspirantes 2025</title>
+    
+    <!-- Recursos Comunes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common-styles.css">
+
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header y Navegación -->
+    <header class="bg-gray-900 text-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-red-500">Aspirantes 2025</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="rolesenunservicio.html" class="hover:text-red-400">Roles en Servicio</a>
+                <a href="juegoservicios.html" class="hover:text-red-400">Juego de Roles</a>
+                <a href="torreradial.html" class="hover:text-red-400">Torre Radial</a>
+                <a href="materiales.html" class="hover:text-red-400">Materiales y Equipos</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-3 space-y-2">
+            <a href="rolesenunservicio.html" class="block hover:text-red-400">Roles en Servicio</a>
+            <a href="juegoservicios.html" class="block hover:text-red-400">Juego de Roles</a>
+            <a href="torreradial.html" class="block hover:text-red-400">Torre Radial</a>
+            <a href="materiales.html" class="block hover:text-red-400">Materiales y Equipos</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <section id="torre">
+            <h2 class="text-3xl font-bold mb-6 section-title">Torre de Comunicaciones</h2>
+            <div class="bg-white p-8 rounded-lg shadow-lg text-gray-600 leading-relaxed">
+                <p class="mb-4">
+                    La torre de comunicaciones es el nexo vital entre el cuartel, las unidades en servicio y otros organismos. Su correcto uso y el conocimiento de los protocolos son fundamentales para una comunicación clara y efectiva.
+                </p>
+                <h3 class="text-xl font-semibold mt-6 mb-2 text-red-600">Protocolo Radial Básico</h3>
+                <ul class="list-disc pl-5">
+                    <li><strong>Claridad:</strong> Hable pausado y claro.</li>
+                    <li><strong>Concisón:</strong> Sea breve y vaya al punto. No use la radio para conversaciones informales.</li>
+                    <li><strong>Identificación:</strong> Comience siempre identificando a quién llama y quién es usted (Ej: "Cuartel para Móvil 4").</li>
+                    <li><strong>Códigos Q:</strong> Utilice los códigos Q estandarizados para agilizar la comunicación (Ej: QAP - "Permanezca en escucha", QTH - "Ubicación").</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Botón Volver Arriba -->
+    <button id="to-top-button" title="Volver Arriba" class="hidden fixed bottom-5 right-5 z-50 p-3 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-opacity">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    </button>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-8">
+            <div class="text-center">
+                <p class="text-gray-400 mt-2">Sacrificio, Valor y Abnegación.</p>
+                <p class="text-xs text-gray-500 mt-6">Sitio de estudio para Aspirantes a Bomberos Voluntarios 2025.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Común -->
+    <script src="common-scripts.js"></script>
+
+</body>
+</html>
