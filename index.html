@@ -98,6 +98,7 @@
                 <div class="hidden md:flex space-x-4 lg:space-x-6">
                     <a href="#clases" class="hover:text-red-400 text-sm lg:text-base">Materiales en Drive</a>
                     <a href="#resumenes" class="hover:text-red-400 text-sm lg:text-base">Resumen de Clases</a>
+                    <a href="#juegos" class="hover:text-red-400 text-sm lg:text-base">Juegos</a> </div>
                 </div>
                 <div class="md:hidden">
                     <button id="menu-btn" class="text-white focus:outline-none">
@@ -108,6 +109,7 @@
             <div id="mobile-menu" class="hidden md:hidden px-6 pb-3 space-y-2">
                 <a href="#clases" class="block hover:text-red-400">Materiales en Drive</a>
                 <a href="#resumenes" class="block hover:text-red-400">Resumen de Clases</a>
+                <a href="#juegos" class="block hover:text-red-400">Juegos</a>
             </div>
         </header>
 
@@ -182,6 +184,41 @@
                     </div>
                 </section>
             </section>
+
+            <section id="juegos" class="mb-16">
+    <h2 class="text-3xl font-bold mb-6 section-title">Juegos Interactivos</h2>
+    <p class="mb-8 text-gray-600">Sección para juegos y actividades lúdicas creadas para repasar conceptos de forma interactiva.</p>
+
+    <div id="games-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        </div>
+</section>
+
+            <section id="add-game-section" class="mt-12">
+                <h3 class="text-2xl font-bold mb-4 section-title">Agregar Nuevo Juego</h3>
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                        <div class="md:col-span-2">
+                            <label for="new-game-title" class="block text-sm font-bold mb-2">Título del Juego:</label>
+                            <input type="text" id="new-game-title" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: Sopa de Letras de Equipos">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="new-game-url" class="block text-sm font-bold mb-2">URL del Juego:</label>
+                            <input type="text" id="new-game-url" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Pega aquí el enlace a tu juego">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="new-game-description" class="block text-sm font-bold mb-2">Descripción Corta:</label>
+                            <textarea id="new-game-description" rows="3" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: Encuentra los nombres de las herramientas de zapa."></textarea>
+                        </div>
+                         <div>
+                            <label for="new-game-icon" class="block text-sm font-bold mb-2">Icono (Font Awesome):</label>
+                            <input type="text" id="new-game-icon" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: fas fa-gamepad">
+                        </div>
+                    </div>
+                    <button id="add-game-button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">
+                        <i class="fas fa-plus-circle mr-2"></i>Agregar Juego
+                    </button>
+                </div>
+            </section>
         </main>
         
         <button id="to-top-button" title="Volver Arriba" class="hidden fixed bottom-5 right-5 z-50 p-3 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-opacity">
@@ -232,6 +269,7 @@
         const db = firebase.firestore();
         const auth = firebase.auth();
         const classesCollection = db.collection("clases");
+        const gamesCollection = db.collection("juegos");
         let originalContent = {};
 
         // Iniciar sesión anónimamente
@@ -414,6 +452,33 @@
                 document.execCommand('insertText', false, plainText);
             }
         }
+        // Escuchar cambios en la colección de JUEGOS
+                gamesCollection.onSnapshot(snapshot => {
+                    const gamesContainer = document.getElementById('games-container');
+                    gamesContainer.innerHTML = ''; // Limpiar contenedor
+                    snapshot.forEach(doc => {
+                        const game = doc.data();
+                        const docId = doc.id;
+                        const gameHtml = `
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 info-details">
+                            <div class="p-6">
+                                <h4 class="font-bold text-xl mb-2 flex items-center">
+                                    <i class="${game.icon || 'fas fa-gamepad'} mr-3 text-red-500"></i>
+                                    ${game.title}
+                                </h4>
+                                <p class="text-gray-600 text-base mb-4">${game.description}</p>
+                                <a href="${game.url}" target="_blank" class="inline-block bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600">
+                                    <i class="fas fa-play mr-2"></i>Jugar Ahora
+                                </a>
+                                <button class="delete-button action-button ml-2" onclick="deleteGame('${docId}')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        `;
+                        gamesContainer.innerHTML += gameHtml;
+                    });
+                });
         
         // Dark Mode
         const themeToggle = document.getElementById('theme-toggle');
@@ -446,6 +511,46 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
+
+        // Event listener para el botón de AGREGAR JUEGO
+document.getElementById('add-game-button').addEventListener('click', () => {
+    const titleInput = document.getElementById('new-game-title');
+    const urlInput = document.getElementById('new-game-url');
+    const descriptionInput = document.getElementById('new-game-description');
+    const iconInput = document.getElementById('new-game-icon');
+
+    const title = titleInput.value;
+    const url = urlInput.value;
+    const description = descriptionInput.value;
+    const icon = iconInput.value.trim() || 'fas fa-gamepad';
+
+    if (!title || !url || !description) {
+        alert('Por favor, completa todos los campos del juego.');
+        return;
+    }
+
+    const newGame = {
+        title: title,
+        url: url,
+        description: description,
+        icon: icon,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp() // Para ordenar por fecha si quieres
+    };
+
+    gamesCollection.add(newGame).then(() => {
+        titleInput.value = '';
+        urlInput.value = '';
+        descriptionInput.value = '';
+        iconInput.value = '';
+    }).catch(error => console.error("Error al agregar el juego:", error));
+});
+
+// Función para ELIMINAR un juego
+function deleteGame(docId) {
+    if (confirm('¿Estás seguro de que quieres eliminar este juego?')) {
+        gamesCollection.doc(docId).delete().catch(error => console.error("Error al eliminar el juego:", error));
+    }
+}
     </script>
 </body>
 </html>
