@@ -75,6 +75,14 @@
         .slider:before { background-color: #fff; bottom: 4px; content: ""; height: 16px; left: 4px; position: absolute; transition: .4s; width: 16px; border-radius: 50%; }
         input:checked + .slider { background-color: #EF4444; }
         input:checked + .slider:before { transform: translateX(24px); }
+
+        /* --- NUEVA CLASE QUE DEBES AGREGAR --- */
+        .theme-card {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+        }
+        /* ------------------------------------ */
+        
         .custom-input { background-color: var(--input-bg-color); color: var(--input-text-color); border: 1px solid var(--border-color); }
         body.dark-mode .edit-button, body.dark-mode .editor-toolbar button { background-color: #4b5563; border-color: #6b7280; color: #e5e7eb; }
         body.dark-mode .edit-button:hover, body.dark-mode .editor-toolbar button:hover { background-color: #6b7280; }
@@ -146,7 +154,7 @@
 
                 <section id="add-class-section" class="mt-12">
                     <h3 class="text-2xl font-bold mb-4 section-title">Agregar Nueva Clase</h3>
-                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+                    <div class="theme-card p-6 rounded-lg shadow-lg">
                         <div class="grid md:grid-cols-3 gap-4 mb-4">
                              <div>
                                 <label for="new-class-number" class="block text-sm font-bold mb-2">N° de Clase:</label>
@@ -195,7 +203,7 @@
 
             <section id="add-game-section" class="mt-12">
                 <h3 class="text-2xl font-bold mb-4 section-title">Agregar Nuevo Juego</h3>
-                <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+               <div class="theme-card p-6 rounded-lg shadow-lg">
                     <div class="grid md:grid-cols-2 gap-4 mb-4">
                         <div class="md:col-span-2">
                             <label for="new-game-title" class="block text-sm font-bold mb-2">Título del Juego:</label>
