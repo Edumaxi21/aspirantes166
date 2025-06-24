@@ -15,21 +15,39 @@
         :root {
             --bg-color: #F9FAFB;
             --text-color: #1F2937;
+            --text-muted-color: #6B7280; /* Gris para texto secundario */
             --card-bg-color: white;
             --border-color: #E5E7EB;
             --input-bg-color: white;
             --input-text-color: #1F2937;
             --summary-text-color: #1F2937;
+            --accent-color: #2563EB; /* Azul para enlaces o títulos especiales */
         }
         body.dark-mode {
             --bg-color: #111827;
             --text-color: #F9FAFB;
+            --text-muted-color: #9CA3AF; /* Gris claro para modo oscuro */
             --card-bg-color: #1F2937;
             --border-color: #374151;
             --input-bg-color: #374151;
             --input-text-color: #F9FAFB;
             --summary-text-color: #F9FAFB;
+            --accent-color: #3B82F6; /* Azul más brillante para modo oscuro */
         }
+        body.sepia-mode {
+            --bg-color: #f5f0e1;
+            --text-color: #5d4037;
+            --text-muted-color: #9e8a7e; /* Marrón atenuado para modo sepia */
+            --card-bg-color: #e8e0d1;
+            --border-color: #d7c7b7;
+            --input-bg-color: #f5f0e1;
+            --input-text-color: #5d4037;
+            --summary-text-color: #4e342e;
+            --accent-color: #8d6e63; /* Marrón más oscuro para acento en sepia */
+        }
+    
+    /* El resto de tu CSS va aquí... */
+        
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
         .hero-bg { background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://placehold.co/1200x800/222/FFF?text=Aspirantes+a+Bomberos'); background-size: cover; background-position: center; }
         .section-title { border-left: 4px solid #EF4444; padding-left: 1rem; }
@@ -123,10 +141,10 @@
             <section id="clases" class="mb-16">
                 <h2 class="text-3xl font-bold mb-6 section-title">Materiales Oficiales de Estudio</h2>
                 <div class="theme-card p-8 text-center">
-                    <h3 class="font-bold text-2xl mb-4 text-blue-600 flex items-center justify-center">
+                    <h3 class="font-bold text-2xl mb-4 flex items-center justify-center" style="color: var(--accent-color);">
                         <i class="fas fa-folder-open mr-3"></i>Acceso a Materiales en Drive
                     </h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+                    <p class="mb-6 max-w-2xl mx-auto">
                         Aquí encontrarás todas las clases, documentos PDF y recursos oficiales. Es fundamental que uses este material como tu fuente principal de estudio.
                     </p>
                     <a href="https://drive.google.com/drive/folders/1N7rWK6zXRNCNvKKsD5CGdGxJySTVn9aB?usp=sharing" target="_blank" class="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105">
@@ -137,7 +155,7 @@
 
             <section id="resumenes">
                 <h2 class="text-3xl font-bold mb-6 section-title">Resúmenes de Clases Colaborativos</h2>
-                <p class="mb-8 text-gray-600 dark:text-gray-300">Utiliza estos resúmenes para repasar. Haz clic en "Modificar" para editar el contenido, y los cambios serán visibles para todos tus compañeros.</p>
+                <p class="mb-8">Utiliza estos resúmenes para repasar. Haz clic en "Modificar" para editar el contenido, y los cambios serán visibles para todos tus compañeros.</p>
                 
                 <div id="class-modules-container">
                     </div>
@@ -185,7 +203,7 @@
 
             <section id="juegos" class="mb-16">
                 <h2 class="text-3xl font-bold mb-6 section-title">Juegos Interactivos</h2>
-                <p class="mb-8 text-gray-600 dark:text-gray-300">Sección para juegos y actividades lúdicas creadas para repasar conceptos de forma interactiva.</p>
+                <p class="mb-8">Sección para juegos y actividades lúdicas creadas para repasar conceptos de forma interactiva.</p>
                 <div id="games-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     </div>
             </section>
@@ -224,20 +242,21 @@
 
         <footer class="bg-gray-900 text-white">
             <div class="container mx-auto px-6 py-8 text-center">
-                <div class="flex justify-center items-center mb-4">
-                    <span class="mr-3 text-sm font-medium">Modo Oscuro</span>
-                    <label class="theme-switch">
-                        <input type="checkbox" id="theme-toggle">
-                        <span class="slider"></span>
-                    </label>
+                <div class="flex justify-center items-center mb-4 space-x-2">
+                            <span class="mr-3 text-sm font-medium">Tema:</span>
+                            <button id="theme-light-btn" class="px-3 py-1 text-sm font-semibold rounded-md bg-gray-200 text-gray-800">Claro</button>
+                            <button id="theme-sepia-btn" class="px-3 py-1 text-sm font-semibold rounded-md bg-yellow-200 text-yellow-800">Sepia</button>
+                            <button id="theme-dark-btn" class="px-3 py-1 text-sm font-semibold rounded-md bg-gray-700 text-gray-200">Oscuro</button>
+                    
+                    
                 </div>
                 <div class="footer-links mb-4">
                     <a href="https://www.instagram.com/maxiperez19" target="_blank" class="mx-2 hover:text-red-500"><i class="fab fa-instagram mr-1"></i>@maxiperez19</a>
                     <a href="mailto:edumaxi21@gmail.com" class="mx-2 hover:text-red-500"><i class="fas fa-envelope mr-1"></i>edumaxi21@gmail.com</a>
                 </div>
-                <p class="text-gray-400 mt-2">Sacrificio, Valor y Abnegación.</p>
-                <p class="text-xs text-gray-500 mt-6">Sitio de estudio para Aspirantes a Bomberos Voluntarios 2025.</p>
-                <p class="text-xs text-gray-600 mt-2">Página desarrollada por Gemini.</p>
+                    <p class="mt-2" style="color: var(--text-muted-color);">Sacrificio, Valor y Abnegación.</p>
+                    <p class="text-xs mt-6" style="color: var(--text-muted-color);">Sitio de estudio para Aspirantes a Bomberos Voluntarios 2025.</p>
+                    <p class="text-xs mt-2" style="color: var(--text-muted-color);">Página desarrollada por Gemini.</p>
             </div>
         </footer>
 
@@ -304,13 +323,37 @@
             });
         }
         
-        // Dark Mode
-        const themeToggle = document.getElementById('theme-toggle');
-        if(themeToggle) {
-            themeToggle.addEventListener('change', () => {
-                document.body.classList.toggle('dark-mode');
-            });
-        }
+        // =========================================================================================
+// LÓGICA DE TEMAS (Claro, Sepia, Oscuro)
+// =========================================================================================
+const lightBtn = document.getElementById('theme-light-btn');
+const sepiaBtn = document.getElementById('theme-sepia-btn');
+const darkBtn = document.getElementById('theme-dark-btn');
+
+function setTheme(theme) {
+    // Primero, removemos cualquier clase de tema existente
+    document.body.classList.remove('dark-mode', 'sepia-mode');
+
+    // Si el tema es oscuro o sepia, añadimos la clase correspondiente
+    if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+    } else if (theme === 'sepia') {
+        document.body.classList.add('sepia-mode');
+    }
+
+    // Guardamos la preferencia en el almacenamiento local del navegador
+    localStorage.setItem('pageTheme', theme);
+}
+
+lightBtn.addEventListener('click', () => setTheme('light'));
+sepiaBtn.addEventListener('click', () => setTheme('sepia'));
+darkBtn.addEventListener('click', () => setTheme('dark'));
+
+// Al cargar la página, verificamos si hay un tema guardado y lo aplicamos
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('pageTheme') || 'light'; // 'light' es el por defecto
+    setTheme(savedTheme);
+});
         
         // =========================================================================================
         // LÓGICA DE LA APLICACIÓN Y FIREBASE
@@ -483,7 +526,7 @@
                         <h4 class="font-bold text-xl mb-2 flex items-center">
                             <i class="${game.icon || 'fas fa-gamepad'} mr-3 text-red-500"></i>${game.title}
                         </h4>
-                        <p class="text-gray-600 dark:text-gray-300 text-base mb-4">${game.description || ''}</p>
+                        <p class="text-base mb-4">${game.description || ''}</p>
                         <button onclick="openGameInCanvas('${docId}')" class="inline-block bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600"><i class="fas fa-play mr-2"></i>Abrir Juego</button>
                         <button class="delete-button action-button ml-2" onclick="deleteGame('${docId}')"><i class="fas fa-trash"></i></button>
                     </div>
