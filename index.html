@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía de Estudio Colaborativa - Aspirantes 2025</title>
     
-    <!-- Recursos Comunes -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +37,7 @@
         .info-details:hover { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05); }
         .info-summary { font-weight: 600; font-size: 1.125rem; padding: 1rem 1.5rem; cursor: pointer; display: flex; align-items: center; list-style: none; color: var(--summary-text-color); }
         .info-summary::-webkit-details-marker { display: none; }
-        .info-summary .summary-icon { transition: transform 0.2s ease-in-out; margin-left: 1rem; }
+        .info-summary .summary-icon { transition: transform 0.2s ease-in-out; }
         .info-details[open] > .info-summary .summary-icon { transform: rotate(180deg); }
         .details-content { padding: 1.5rem; color: #4B5563; line-height: 1.7; }
         body.dark-mode .details-content { color: #D1D5DB; }
@@ -75,28 +74,15 @@
         .slider:before { background-color: #fff; bottom: 4px; content: ""; height: 16px; left: 4px; position: absolute; transition: .4s; width: 16px; border-radius: 50%; }
         input:checked + .slider { background-color: #EF4444; }
         input:checked + .slider:before { transform: translateX(24px); }
-
-        /* --- NUEVA CLASE QUE DEBES AGREGAR --- */
-        .theme-card {
-            background-color: var(--card-bg-color);
-            border: 1px solid var(--border-color);
-        }
-        /* ------------------------------------ */
-        
+        .theme-card { background-color: var(--card-bg-color); border: 1px solid var(--border-color); }
         .custom-input { background-color: var(--input-bg-color); color: var(--input-text-color); border: 1px solid var(--border-color); }
         body.dark-mode .edit-button, body.dark-mode .editor-toolbar button { background-color: #4b5563; border-color: #6b7280; color: #e5e7eb; }
         body.dark-mode .edit-button:hover, body.dark-mode .editor-toolbar button:hover { background-color: #6b7280; }
-
-        /* Justo al final de tu bloque <style> */
-            #game-modal {
-                transition: opacity 0.3s ease;
-            }
-        
+        #game-modal { transition: opacity 0.3s ease; }
     </style>
 </head>
 <body>
     
-    <!-- Pantalla de Inicio (Splash Screen) -->
     <div id="splash-screen">
         <h1 class="text-4xl md:text-5xl font-bold mb-2">Aspirantes de Malvinas Argentinas</h1>
         <p class="text-xl text-red-500 mb-6">INOVB 166</p>
@@ -104,7 +90,6 @@
         <button id="enter-app-button" class="w-full max-w-sm bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg text-xl transition-transform transform hover:scale-105">Ingresar al Módulo de Estudio</button>
     </div>
 
-    <!-- Contenido Principal (Oculto inicialmente) -->
     <div id="main-content" style="display: none;">
         <header class="bg-gray-900 text-white shadow-md sticky top-0 z-50">
             <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
@@ -112,7 +97,7 @@
                 <div class="hidden md:flex space-x-4 lg:space-x-6">
                     <a href="#clases" class="hover:text-red-400 text-sm lg:text-base">Materiales en Drive</a>
                     <a href="#resumenes" class="hover:text-red-400 text-sm lg:text-base">Resumen de Clases</a>
-                    <a href="#juegos" class="hover:text-red-400 text-sm lg:text-base">Juegos</a> </div>
+                    <a href="#juegos" class="hover:text-red-400 text-sm lg:text-base">Juegos</a>
                 </div>
                 <div class="md:hidden">
                     <button id="menu-btn" class="text-white focus:outline-none">
@@ -137,11 +122,11 @@
         <main class="container mx-auto px-6 py-12">
             <section id="clases" class="mb-16">
                 <h2 class="text-3xl font-bold mb-6 section-title">Materiales Oficiales de Estudio</h2>
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden p-8 text-center border border-gray-200">
-                    <h3 class="font-bold text-2xl mb-4 text-blue-800 flex items-center justify-center">
+                <div class="theme-card p-8 text-center">
+                    <h3 class="font-bold text-2xl mb-4 text-blue-600 flex items-center justify-center">
                         <i class="fas fa-folder-open mr-3"></i>Acceso a Materiales en Drive
                     </h3>
-                    <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
                         Aquí encontrarás todas las clases, documentos PDF y recursos oficiales. Es fundamental que uses este material como tu fuente principal de estudio.
                     </p>
                     <a href="https://drive.google.com/drive/folders/1N7rWK6zXRNCNvKKsD5CGdGxJySTVn9aB?usp=sharing" target="_blank" class="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105">
@@ -152,11 +137,10 @@
 
             <section id="resumenes">
                 <h2 class="text-3xl font-bold mb-6 section-title">Resúmenes de Clases Colaborativos</h2>
-                <p class="mb-8 text-gray-600">Utiliza estos resúmenes para repasar. Haz clic en "Modificar" para editar el contenido, y los cambios serán visibles para todos tus compañeros.</p>
+                <p class="mb-8 text-gray-600 dark:text-gray-300">Utiliza estos resúmenes para repasar. Haz clic en "Modificar" para editar el contenido, y los cambios serán visibles para todos tus compañeros.</p>
                 
                 <div id="class-modules-container">
-                    <!-- Los módulos de clase se insertarán aquí dinámicamente desde Firebase -->
-                </div>
+                    </div>
 
                 <section id="add-class-section" class="mt-12">
                     <h3 class="text-2xl font-bold mb-4 section-title">Agregar Nueva Clase</h3>
@@ -200,42 +184,37 @@
             </section>
 
             <section id="juegos" class="mb-16">
-    <h2 class="text-3xl font-bold mb-6 section-title">Juegos Interactivos</h2>
-    <p class="mb-8 text-gray-600">Sección para juegos y actividades lúdicas creadas para repasar conceptos de forma interactiva.</p>
-
-    <div id="games-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        </div>
-</section>
+                <h2 class="text-3xl font-bold mb-6 section-title">Juegos Interactivos</h2>
+                <p class="mb-8 text-gray-600 dark:text-gray-300">Sección para juegos y actividades lúdicas creadas para repasar conceptos de forma interactiva.</p>
+                <div id="games-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    </div>
+            </section>
 
             <section id="add-game-section" class="mt-12">
                 <h3 class="text-2xl font-bold mb-4 section-title">Agregar Nuevo Juego</h3>
-              <div class="theme-card p-6 rounded-lg shadow-lg">
-    </div>
-
-<div class="theme-card p-6 rounded-lg shadow-lg">
-    <div class="grid grid-cols-1 gap-4 mb-4">
-        <div>
-            <label for="new-game-title" class="block text-sm font-bold mb-2">Título del Juego:</label>
-            <input type="text" id="new-game-title" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: Test de Equipos">
-        </div>
-         <div>
-            <label for="new-game-description" class="block text-sm font-bold mb-2">Descripción Corta:</label>
-            <input type="text" id="new-game-description" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: Un test rápido sobre EPP.">
-        </div>
-         <div>
-            <label for="new-game-icon" class="block text-sm font-bold mb-2">Icono (Font Awesome):</label>
-            <input type="text" id="new-game-icon" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: fas fa-vial">
-        </div>
-
-        <div>
-            <label for="new-game-full-code" class="block text-sm font-bold mb-2">Código Completo del Juego:</label>
-            <textarea id="new-game-full-code" rows="10" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input font-mono text-sm" placeholder="Pega aquí tu código completo (HTML, CSS y JS en un solo bloque)"></textarea>
-        </div>
-    </div>
-    <button id="add-game-button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">
-        <i class="fas fa-plus-circle mr-2"></i>Agregar Juego
-    </button>
-</div>
+                <div class="theme-card p-6 rounded-lg shadow-lg">
+                    <div class="grid grid-cols-1 gap-4 mb-4">
+                        <div>
+                            <label for="new-game-title" class="block text-sm font-bold mb-2">Título del Juego:</label>
+                            <input type="text" id="new-game-title" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: Test de Equipos">
+                        </div>
+                         <div>
+                            <label for="new-game-description" class="block text-sm font-bold mb-2">Descripción Corta:</label>
+                            <input type="text" id="new-game-description" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: Un test rápido sobre EPP.">
+                        </div>
+                         <div>
+                            <label for="new-game-icon" class="block text-sm font-bold mb-2">Icono (Font Awesome):</label>
+                            <input type="text" id="new-game-icon" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input" placeholder="Ej: fas fa-vial">
+                        </div>
+                        <div>
+                            <label for="new-game-full-code" class="block text-sm font-bold mb-2">Código Completo del Juego:</label>
+                            <textarea id="new-game-full-code" rows="10" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline custom-input font-mono text-sm" placeholder="Pega aquí tu código completo (HTML, CSS y JS en un solo bloque)"></textarea>
+                        </div>
+                    </div>
+                    <button id="add-game-button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">
+                        <i class="fas fa-plus-circle mr-2"></i>Agregar Juego
+                    </button>
+                </div>
             </section>
         </main>
         
@@ -252,39 +231,36 @@
                         <span class="slider"></span>
                     </label>
                 </div>
-                                <div class="footer-links mb-4">
-                                    <a href="https://www.instagram.com/maxiperez19" target="_blank" class="mx-2 hover:text-red-500"><i class="fab fa-instagram mr-1"></i>@maxiperez19</a>
-                                    <a href="mailto:edumaxi21@gmail.com" class="mx-2 hover:text-red-500"><i class="fas fa-envelope mr-1"></i>edumaxi21@gmail.com</a>
-                                </div>
-                                <p class="text-gray-400 mt-2">Sacrificio, Valor y Abnegación.</p>
-                                <p class="text-xs text-gray-500 mt-6">Sitio de estudio para Aspirantes a Bomberos Voluntarios 2025.</p>
-                                <p class="text-xs text-gray-600 mt-2">Página desarrollada por Gemini.</p>
-                            </div>
-                    
-                            <div id="game-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex justify-center items-center p-4">
-                    <div class="bg-gray-800 w-full h-full max-w-6xl rounded-lg shadow-xl flex flex-col">
-                        <div class="flex justify-between items-center p-2 border-b border-gray-700">
-                            <h3 id="game-modal-title" class="text-white text-lg font-bold"></h3>
-                            <button id="close-modal-button" class="text-white text-2xl font-bold hover:text-red-500">&times;</button>
-                        </div>
-                        <div class="flex-grow p-1">
-                            <iframe id="game-canvas-iframe" class="w-full h-full border-0 bg-white" sandbox="allow-scripts allow-same-origin"></iframe>
-                        </div>
-                    </div>
-                </div>        
-            
+                <div class="footer-links mb-4">
+                    <a href="https://www.instagram.com/maxiperez19" target="_blank" class="mx-2 hover:text-red-500"><i class="fab fa-instagram mr-1"></i>@maxiperez19</a>
+                    <a href="mailto:edumaxi21@gmail.com" class="mx-2 hover:text-red-500"><i class="fas fa-envelope mr-1"></i>edumaxi21@gmail.com</a>
+                </div>
+                <p class="text-gray-400 mt-2">Sacrificio, Valor y Abnegación.</p>
+                <p class="text-xs text-gray-500 mt-6">Sitio de estudio para Aspirantes a Bomberos Voluntarios 2025.</p>
+                <p class="text-xs text-gray-600 mt-2">Página desarrollada por Gemini.</p>
+            </div>
         </footer>
+
+        <div id="game-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex justify-center items-center p-4">
+            <div class="bg-gray-800 w-full h-full max-w-6xl rounded-lg shadow-xl flex flex-col">
+                <div class="flex justify-between items-center p-2 border-b border-gray-700">
+                    <h3 id="game-modal-title" class="text-white text-lg font-bold"></h3>
+                    <button id="close-modal-button" class="text-white text-2xl font-bold hover:text-red-500">&times;</button>
+                </div>
+                <div class="flex-grow p-1">
+                    <iframe id="game-canvas-iframe" class="w-full h-full border-0 bg-white" sandbox="allow-scripts allow-same-origin"></iframe>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
 
     <script>
-        
         // =========================================================================================
-        // PASO 4: CONFIGURACIÓN DE FIREBASE - PEGÁ TU CÓDIGO AQUÍ
+        // CONFIGURACIÓN DE FIREBASE
         // =========================================================================================
         const firebaseConfig = {
             apiKey: "AIzaSyCFVwR4yfU2pWgdlHkNEIi6QHMbpmFks7g",
@@ -293,238 +269,15 @@
             storageBucket: "guia-aspirantes2025.firebasestorage.app",
             messagingSenderId: "360441632014",
             appId: "1:360441632014:web:4983f006aa4116b307f35f"
-            };
-        // =========================================================================================
+        };
 
         // Inicializar Firebase
         firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        const auth = firebase.auth();
-        const classesCollection = db.collection("clases");
-        const gamesCollection = db.collection("juegos");
-        let originalContent = {};
 
-         // Script para el Splash Screen
-                document.getElementById('enter-app-button').addEventListener('click', () => {
-                    document.getElementById('splash-screen').style.display = 'none';
-                    document.getElementById('main-content').style.display = 'block';
-                });
+        // =========================================================================================
+        // SCRIPTS DE UI PRINCIPAL (ALTA PRIORIDAD)
+        // =========================================================================================
         
-        // Iniciar sesión anónimamente
-        auth.signInAnonymously().catch(error => {
-            console.error("Error al iniciar sesión anónimamente:", error);
-        });
-
-        // Escuchar cambios en tiempo real
-        classesCollection.orderBy("id").onSnapshot(snapshot => {
-            const classModulesContainer = document.getElementById('class-modules-container');
-            classModulesContainer.innerHTML = '';
-            snapshot.forEach(doc => {
-                const cls = doc.data();
-                const docId = doc.id;
-                const classHtml = `
-                <details class="info-details" id="details-${docId}">
-                    <summary class="info-summary">
-                        <span><i class="fas ${cls.icon || 'fa-book'} mr-3"></i>Clase ${cls.id}: ${cls.title}</span>
-                        <div class="ml-auto flex items-center">
-                            <button class="edit-button" onclick="startEdit(event, '${docId}')">Modificar</button>
-                            <button class="delete-button action-button ml-2" onclick="deleteClass(event, '${docId}')"><i class="fas fa-trash"></i></button>
-                        </div>
-                        <i class="fas fa-chevron-down summary-icon ml-2"></i>
-                    </summary>
-                    <div id="content-${docId}" class="details-content">
-                        ${cls.content}
-                    </div>
-                    <div class="editor-toolbar" id="toolbar-${docId}" style="display:none;">
-                         <button onmousedown="event.preventDefault(); formatDoc('content-${docId}', 'bold');"><i class="fas fa-bold"></i></button>
-                         <button onmousedown="event.preventDefault(); formatDoc('content-${docId}', 'italic');"><i class="fas fa-italic"></i></button>
-                         <button onmousedown="event.preventDefault(); formatDoc('content-${docId}', 'insertUnorderedList');"><i class="fas fa-list-ul"></i></button>
-                         <button onmousedown="event.preventDefault(); addMedia('imagen', 'content-${docId}');"><i class="fas fa-image"></i></button>
-                         <button onmousedown="event.preventDefault(); addMedia('video', 'content-${docId}');"><i class="fas fa-video"></i></button>
-                         <div class="color-picker-wrapper ml-2">
-                             <input type="color" class="color-picker" onchange="formatDoc('content-${docId}', 'foreColor', this.value)">
-                         </div>
-                    </div>
-                    <div class="action-buttons" id="actions-${docId}">
-                        <button class="undo-button action-button" onclick="undoChanges(event, '${docId}')">Deshacer</button>
-                        <button class="save-button action-button" onclick="saveChanges(event, '${docId}')">Guardar Cambios</button>
-                    </div>
-                </details>`;
-                classModulesContainer.innerHTML += classHtml;
-            });
-            document.querySelectorAll('.details-content').forEach(div => {
-                div.addEventListener('paste', handlePaste);
-            });
-        });
-
-        function startEdit(event, docId) {
-            event.preventDefault();
-            event.stopPropagation();
-            const contentDiv = document.getElementById(`content-${docId}`);
-            const detailsElement = contentDiv.closest('.info-details');
-            const actionsDiv = detailsElement.querySelector('.action-buttons');
-            const editButton = detailsElement.querySelector('.edit-button');
-            const toolbar = detailsElement.querySelector('.editor-toolbar');
-
-            if (!contentDiv.isContentEditable) {
-                originalContent[docId] = contentDiv.innerHTML;
-                contentDiv.contentEditable = 'true';
-                contentDiv.classList.add('bg-yellow-100', 'outline', 'outline-2', 'outline-amber-500');
-                actionsDiv.style.display = 'block';
-                toolbar.style.display = 'flex';
-                editButton.style.display = 'none';
-                contentDiv.focus();
-            }
-        }
-
-        function saveChanges(event, docId) {
-            const contentDiv = document.getElementById(`content-${docId}`);
-            classesCollection.doc(docId).update({ content: contentDiv.innerHTML })
-                .then(() => {
-                    endEdit(docId);
-                    delete originalContent[docId];
-                })
-                .catch(error => console.error("Error al guardar cambios:", error));
-        }
-        
-        function undoChanges(event, docId) {
-            const contentDiv = document.getElementById(`content-${docId}`);
-            if (originalContent[docId]) {
-                contentDiv.innerHTML = originalContent[docId];
-            }
-            endEdit(docId);
-            delete originalContent[docId];
-        }
-        
-        function endEdit(docId) {
-            const contentDiv = document.getElementById(`content-${docId}`);
-            const detailsElement = contentDiv.closest('.info-details');
-            const actionsDiv = detailsElement.querySelector('.action-buttons');
-            const editButton = detailsElement.querySelector('.edit-button');
-            const toolbar = detailsElement.querySelector('.editor-toolbar');
-            
-            contentDiv.contentEditable = 'false';
-            contentDiv.classList.remove('bg-yellow-100', 'outline', 'outline-2', 'outline-amber-500');
-            actionsDiv.style.display = 'none';
-            toolbar.style.display = 'none';
-            editButton.style.display = 'inline-block';
-        }
-
-        function deleteClass(event, docId) {
-            event.preventDefault();
-            event.stopPropagation();
-            if (confirm('¿Estás seguro de que quieres eliminar esta clase? Esta acción no se puede deshacer.')) {
-                classesCollection.doc(docId).delete().catch(error => console.error("Error al eliminar la clase:", error));
-            }
-        }
-        
-        function formatDoc(editorId, command, value = null) {
-            const editor = document.getElementById(editorId);
-            editor.focus();
-            document.execCommand(command, false, value);
-        }
-
-        function addMedia(type, editorId) {
-            const editor = document.getElementById(editorId);
-            if (!editor.isContentEditable) return;
-
-            let url = prompt(`Por favor, pega la URL de la ${type}:`);
-            if (!url) return;
-
-            let embedHtml = '';
-            if (type === 'imagen') {
-                embedHtml = `<img src="${url}" alt="Imagen insertada">`;
-            } else if (type === 'video') {
-                let videoId;
-                if (url.includes('youtu.be/')) {
-                    videoId = url.split('youtu.be/')[1].split('?')[0];
-                } else if (url.includes('youtube.com/watch?v=')) {
-                    videoId = url.split('v=')[1].split('&')[0];
-                }
-                
-                if (videoId) {
-                    embedHtml = `<p><iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>`;
-                } else {
-                    alert('URL de YouTube no válida. Por favor, usa una URL como "https://www.youtube.com/watch?v=..." o "https://youtu.be/..."');
-                    return;
-                }
-            }
-            editor.focus();
-            document.execCommand('insertHTML', false, embedHtml);
-        }
-
-        document.getElementById('add-class-button').addEventListener('click', () => {
-            const numberInput = document.getElementById('new-class-number');
-            const titleInput = document.getElementById('new-class-title');
-            const iconInput = document.getElementById('new-class-icon');
-            const contentDiv = document.getElementById('new-class-content');
-            
-            const title = titleInput.value;
-            const content = contentDiv.innerHTML;
-            const classNumber = parseInt(numberInput.value);
-            const iconClass = iconInput.value.trim() || 'fa-pencil-alt text-gray-500';
-
-            if (!classNumber || title.trim() === '' || content.trim() === '' || content.trim() === '<p>Escribe aquí el contenido de tu nueva clase. Puedes usar los botones de arriba para dar formato.</p>') {
-                alert('Por favor, completa el número, título y contenido de la clase.');
-                return;
-            }
-            
-            const newClass = { id: classNumber, icon: 'fas ' + iconClass, title: title, content: content };
-            
-            classesCollection.add(newClass).then(() => {
-                numberInput.value = '';
-                titleInput.value = '';
-                iconInput.value = '';
-                contentDiv.innerHTML = '<p>Escribe aquí el contenido de tu nueva clase...</p>';
-            }).catch(error => console.error("Error al agregar la clase:", error));
-        });
-
-        function handlePaste(e) {
-            e.preventDefault();
-            const pastedData = (e.clipboardData || window.clipboardData).getData('text/html');
-            const plainText = (e.clipboardData || window.clipboardData).getData('text/plain');
-            
-            if (pastedData) {
-                document.execCommand('insertHTML', false, pastedData);
-            } else {
-                document.execCommand('insertText', false, plainText);
-            }
-        }
-        // Escuchar cambios en la colección de JUEGOS
-                gamesCollection.orderBy("createdAt", "desc").onSnapshot(snapshot => {
-    const gamesContainer = document.getElementById('games-container');
-    if (!gamesContainer) return;
-    gamesContainer.innerHTML = ''; // Limpiar contenedor
-    snapshot.forEach(doc => {
-        const game = doc.data();
-        const docId = doc.id;
-        const gameHtml = `
-        <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300 info-details">
-            <div class="p-6">
-                <h4 class="font-bold text-xl mb-2 flex items-center">
-                    <i class="${game.icon || 'fas fa-gamepad'} mr-3 text-red-500"></i>
-                    ${game.title}
-                </h4>
-                <p class="text-gray-600 text-base mb-4">${game.description || ''}</p>
-                <button onclick="openGameInCanvas('${docId}')" class="inline-block bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600">
-                    <i class="fas fa-play mr-2"></i>Abrir Juego
-                </button>
-                <button class="delete-button action-button ml-2" onclick="deleteGame('${docId}')">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </div>
-        </div>
-        `;
-        gamesContainer.innerHTML += gameHtml;
-    });
-});
-        
-        // Dark Mode
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('change', () => {
-            document.body.classList.toggle('dark-mode');
-        });
-
         // Script para el Splash Screen
         document.getElementById('enter-app-button').addEventListener('click', () => {
             document.getElementById('splash-screen').style.display = 'none';
@@ -550,92 +303,250 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
-
-        // Event listener para el botón de AGREGAR JUEGO
-                document.getElementById('add-game-button').addEventListener('click', () => {
-    const title = document.getElementById('new-game-title').value;
-    const description = document.getElementById('new-game-description').value;
-    const icon = document.getElementById('new-game-icon').value.trim() || 'fas fa-gamepad';
-    const fullCode = document.getElementById('new-game-full-code').value;
-
-    if (!title || !fullCode) {
-        alert('Por favor, completa al menos el título y el código del juego.');
-        return;
-    }
-
-    const newGame = {
-        title, description, icon, fullCode,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-    };
-
-    gamesCollection.add(newGame).then(() => {
-        ['new-game-title', 'new-game-description', 'new-game-icon', 'new-game-full-code'].forEach(id => document.getElementById(id).value = '');
-    }).catch(error => console.error("Error al agregar el juego:", error));
-});
-
-// Función para ELIMINAR un juego
-function deleteGame(docId) {
-    if (confirm('¿Estás seguro de que quieres eliminar este juego?')) {
-        gamesCollection.doc(docId).delete().catch(error => console.error("Error al eliminar el juego:", error));
-    }
-}
-        // --- NUEVAS FUNCIONES PARA EL CANVAS DEL JUEGO ---
-
-const gameModal = document.getElementById('game-modal');
-const closeModalButton = document.getElementById('close-modal-button');
-const gameCanvasIframe = document.getElementById('game-canvas-iframe');
-const gameModalTitle = document.getElementById('game-modal-title');
-
-// Función para construir el contenido del Iframe
-
-
-// Función que se llama al hacer clic en "Abrir Juego"
-function openGameInCanvas(gameId) {
-    gamesCollection.doc(gameId).get().then(doc => {
-        if (doc.exists) {
-            const game = doc.data();
-            gameModalTitle.textContent = game.title;
-
-            // La magia está aquí: se asigna directamente el código completo
-            gameCanvasIframe.srcdoc = game.fullCode; 
-
-            gameModal.classList.remove('hidden');
-        } else {
-            alert("Error: No se encontró el juego.");
-        }
-    }).catch(error => console.error("Error al obtener el juego:", error));
-}
-
-// Opcional: Cerrar el modal al hacer clic fuera de él
-gameModal.addEventListener('click', (event) => {
-    if (event.target === gameModal) {
-        closeModalButton.click();
-    }
-});
-
-        // --- LÓGICA PARA CONTROLAR EL MODAL DEL JUEGO ---
-
-    const gameModal = document.getElementById('game-modal');
-    const closeModalButton = document.getElementById('close-modal-button');
-    const gameCanvasIframe = document.getElementById('game-canvas-iframe');
-    const gameModalTitle = document.getElementById('game-modal-title');
-
-    // 1. Lógica para que el botón '×' funcione
-    closeModalButton.addEventListener('click', () => {
-        gameModal.classList.add('hidden');
-        // Limpiamos el iframe para detener cualquier sonido o script del juego
-        gameCanvasIframe.srcdoc = ''; 
-    });
-
-    // 2. Lógica para poder cerrar el juego haciendo clic en el fondo oscuro
-    gameModal.addEventListener('click', (event) => {
-        // Si el clic fue sobre el fondo del modal (el área oscura)
-        if (event.target === gameModal) {
-            // Simulamos un clic en el botón de cerrar
-            closeModalButton.click();
-        }
-    });
         
+        // Dark Mode
+        const themeToggle = document.getElementById('theme-toggle');
+        if(themeToggle) {
+            themeToggle.addEventListener('change', () => {
+                document.body.classList.toggle('dark-mode');
+            });
+        }
+        
+        // =========================================================================================
+        // LÓGICA DE LA APLICACIÓN Y FIREBASE
+        // =========================================================================================
+
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+        const classesCollection = db.collection("clases");
+        const gamesCollection = db.collection("juegos");
+        let originalContent = {};
+
+        // Iniciar sesión anónimamente
+        auth.signInAnonymously().catch(error => {
+            console.error("Error al iniciar sesión anónimamente:", error);
+        });
+
+        // --- Lógica para Resúmenes de Clases ---
+        classesCollection.orderBy("id").onSnapshot(snapshot => {
+            const classModulesContainer = document.getElementById('class-modules-container');
+            if (!classModulesContainer) return;
+            classModulesContainer.innerHTML = '';
+            snapshot.forEach(doc => {
+                const cls = doc.data();
+                const docId = doc.id;
+                const classHtml = `
+                <details class="info-details" id="details-${docId}">
+                    <summary class="info-summary">
+                        <span><i class="fas ${cls.icon || 'fa-book'} mr-3"></i>Clase ${cls.id}: ${cls.title}</span>
+                        <div class="ml-auto flex items-center">
+                            <button class="edit-button" onclick="startEdit(event, '${docId}')">Modificar</button>
+                            <button class="delete-button action-button ml-2" onclick="deleteClass(event, '${docId}')"><i class="fas fa-trash"></i></button>
+                        </div>
+                        <i class="fas fa-chevron-down summary-icon ml-4"></i>
+                    </summary>
+                    <div id="content-${docId}" class="details-content">${cls.content}</div>
+                    <div class="editor-toolbar" id="toolbar-${docId}" style="display:none;">
+                         <button onmousedown="event.preventDefault(); formatDoc('content-${docId}', 'bold');"><i class="fas fa-bold"></i></button>
+                         <button onmousedown="event.preventDefault(); formatDoc('content-${docId}', 'italic');"><i class="fas fa-italic"></i></button>
+                         <button onmousedown="event.preventDefault(); formatDoc('content-${docId}', 'insertUnorderedList');"><i class="fas fa-list-ul"></i></button>
+                         <button onmousedown="event.preventDefault(); addMedia('imagen', 'content-${docId}');"><i class="fas fa-image"></i></button>
+                         <button onmousedown="event.preventDefault(); addMedia('video', 'content-${docId}');"><i class="fas fa-video"></i></button>
+                         <div class="color-picker-wrapper ml-2"><input type="color" class="color-picker" onchange="formatDoc('content-${docId}', 'foreColor', this.value)"></div>
+                    </div>
+                    <div class="action-buttons" id="actions-${docId}"><button class="undo-button action-button" onclick="undoChanges(event, '${docId}')">Deshacer</button><button class="save-button action-button" onclick="saveChanges(event, '${docId}')">Guardar Cambios</button></div>
+                </details>`;
+                classModulesContainer.innerHTML += classHtml;
+            });
+            document.querySelectorAll('.details-content').forEach(div => div.addEventListener('paste', handlePaste));
+        });
+
+        function startEdit(event, docId) {
+            event.preventDefault();
+            event.stopPropagation();
+            const contentDiv = document.getElementById(`content-${docId}`);
+            if (contentDiv.isContentEditable) return;
+            const detailsElement = contentDiv.closest('.info-details');
+            const actionsDiv = detailsElement.querySelector('.action-buttons');
+            const editButton = detailsElement.querySelector('.edit-button');
+            const toolbar = detailsElement.querySelector('.editor-toolbar');
+            originalContent[docId] = contentDiv.innerHTML;
+            contentDiv.contentEditable = 'true';
+            actionsDiv.style.display = 'block';
+            toolbar.style.display = 'flex';
+            editButton.style.display = 'none';
+            contentDiv.focus();
+        }
+
+        function saveChanges(event, docId) {
+            const contentDiv = document.getElementById(`content-${docId}`);
+            classesCollection.doc(docId).update({ content: contentDiv.innerHTML })
+                .then(() => { endEdit(docId); delete originalContent[docId]; })
+                .catch(error => console.error("Error al guardar cambios:", error));
+        }
+        
+        function undoChanges(event, docId) {
+            const contentDiv = document.getElementById(`content-${docId}`);
+            if (originalContent[docId]) { contentDiv.innerHTML = originalContent[docId]; }
+            endEdit(docId);
+            delete originalContent[docId];
+        }
+        
+        function endEdit(docId) {
+            const contentDiv = document.getElementById(`content-${docId}`);
+            const detailsElement = contentDiv.closest('.info-details');
+            const actionsDiv = detailsElement.querySelector('.action-buttons');
+            const editButton = detailsElement.querySelector('.edit-button');
+            const toolbar = detailsElement.querySelector('.editor-toolbar');
+            contentDiv.contentEditable = 'false';
+            actionsDiv.style.display = 'none';
+            toolbar.style.display = 'none';
+            editButton.style.display = 'inline-block';
+        }
+
+        function deleteClass(event, docId) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (confirm('¿Estás seguro de que quieres eliminar esta clase? Esta acción no se puede deshacer.')) {
+                classesCollection.doc(docId).delete().catch(error => console.error("Error al eliminar la clase:", error));
+            }
+        }
+        
+        function formatDoc(editorId, command, value = null) {
+            document.getElementById(editorId).focus();
+            document.execCommand(command, false, value);
+        }
+
+        function addMedia(type, editorId) {
+            const editor = document.getElementById(editorId);
+            if (!editor.isContentEditable) return;
+            const url = prompt(`Por favor, pega la URL de la ${type}:`);
+            if (!url) return;
+            let embedHtml = '';
+            if (type === 'imagen') {
+                embedHtml = `<img src="${url}" alt="Imagen insertada">`;
+            } else if (type === 'video') {
+                let videoId;
+                if (url.includes('youtu.be/')) {
+                    videoId = url.split('youtu.be/')[1].split('?')[0];
+                } else if (url.includes('watch?v=')) {
+                    videoId = url.split('v=')[1].split('&')[0];
+                }
+                if (videoId) {
+                    embedHtml = `<p><iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>`;
+                } else {
+                    alert('URL de YouTube no válida.'); return;
+                }
+            }
+            editor.focus();
+            document.execCommand('insertHTML', false, embedHtml);
+        }
+
+        document.getElementById('add-class-button').addEventListener('click', () => {
+            const numberInput = document.getElementById('new-class-number');
+            const titleInput = document.getElementById('new-class-title');
+            const iconInput = document.getElementById('new-class-icon');
+            const contentDiv = document.getElementById('new-class-content');
+            const title = titleInput.value;
+            const content = contentDiv.innerHTML;
+            const classNumber = parseInt(numberInput.value);
+            const iconClass = iconInput.value.trim() || 'fa-pencil-alt text-gray-500';
+            if (!classNumber || !title.trim() || !content.trim() || content.trim() === '<p>Escribe aquí el contenido de tu nueva clase. Puedes usar los botones de arriba para dar formato.</p>') {
+                alert('Por favor, completa el número, título y contenido de la clase.'); return;
+            }
+            classesCollection.add({ id: classNumber, icon: 'fas ' + iconClass, title: title, content: content })
+                .then(() => {
+                    numberInput.value = ''; titleInput.value = ''; iconInput.value = '';
+                    contentDiv.innerHTML = '<p>Escribe aquí el contenido de tu nueva clase...</p>';
+                }).catch(error => console.error("Error al agregar la clase:", error));
+        });
+
+        function handlePaste(e) {
+            e.preventDefault();
+            const pastedData = (e.clipboardData || window.clipboardData).getData('text/html');
+            const plainText = (e.clipboardData || window.clipboardData).getData('text/plain');
+            if (pastedData) { document.execCommand('insertHTML', false, pastedData); } 
+            else { document.execCommand('insertText', false, plainText); }
+        }
+        
+        // --- Lógica para Juegos Interactivos ---
+        gamesCollection.orderBy("createdAt", "desc").onSnapshot(snapshot => {
+            const gamesContainer = document.getElementById('games-container');
+            if (!gamesContainer) return;
+            gamesContainer.innerHTML = '';
+            snapshot.forEach(doc => {
+                const game = doc.data();
+                const docId = doc.id;
+                const gameHtml = `
+                <div class="theme-card rounded-lg shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+                    <div class="p-6">
+                        <h4 class="font-bold text-xl mb-2 flex items-center">
+                            <i class="${game.icon || 'fas fa-gamepad'} mr-3 text-red-500"></i>${game.title}
+                        </h4>
+                        <p class="text-gray-600 dark:text-gray-300 text-base mb-4">${game.description || ''}</p>
+                        <button onclick="openGameInCanvas('${docId}')" class="inline-block bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600"><i class="fas fa-play mr-2"></i>Abrir Juego</button>
+                        <button class="delete-button action-button ml-2" onclick="deleteGame('${docId}')"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>`;
+                gamesContainer.innerHTML += gameHtml;
+            });
+        });
+
+        document.getElementById('add-game-button').addEventListener('click', () => {
+            const titleInput = document.getElementById('new-game-title');
+            const descriptionInput = document.getElementById('new-game-description');
+            const iconInput = document.getElementById('new-game-icon');
+            const fullCodeInput = document.getElementById('new-game-full-code');
+            const title = titleInput.value;
+            const fullCode = fullCodeInput.value;
+            if (!title || !fullCode) { alert('Por favor, completa al menos el título y el código del juego.'); return; }
+            const newGame = {
+                title: title,
+                description: descriptionInput.value,
+                icon: iconInput.value.trim() || 'fas fa-gamepad',
+                fullCode: fullCode,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            };
+            gamesCollection.add(newGame).then(() => {
+                titleInput.value = ''; descriptionInput.value = ''; iconInput.value = ''; fullCodeInput.value = '';
+            }).catch(error => console.error("Error al agregar el juego:", error));
+        });
+
+        function deleteGame(docId) {
+            if (confirm('¿Estás seguro de que quieres eliminar este juego?')) {
+                gamesCollection.doc(docId).delete().catch(error => console.error("Error al eliminar el juego:", error));
+            }
+        }
+
+        // --- Lógica para Controlar el Modal del Juego (Canvas) ---
+        const gameModal = document.getElementById('game-modal');
+        const closeModalButton = document.getElementById('close-modal-button');
+        const gameCanvasIframe = document.getElementById('game-canvas-iframe');
+        const gameModalTitle = document.getElementById('game-modal-title');
+
+        function openGameInCanvas(gameId) {
+            gamesCollection.doc(gameId).get().then(doc => {
+                if (doc.exists) {
+                    const game = doc.data();
+                    gameModalTitle.textContent = game.title;
+                    gameCanvasIframe.srcdoc = game.fullCode;
+                    gameModal.classList.remove('hidden');
+                } else {
+                    alert("Error: No se encontró el juego.");
+                }
+            }).catch(error => console.error("Error al obtener el juego:", error));
+        }
+
+        closeModalButton.addEventListener('click', () => {
+            gameModal.classList.add('hidden');
+            gameCanvasIframe.srcdoc = ''; 
+        });
+
+        gameModal.addEventListener('click', (event) => {
+            if (event.target === gameModal) {
+                closeModalButton.click();
+            }
+        });
     </script>
 </body>
 </html>
